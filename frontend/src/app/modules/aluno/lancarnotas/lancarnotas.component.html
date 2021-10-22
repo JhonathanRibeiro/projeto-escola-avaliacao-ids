@@ -1,0 +1,15 @@
+<div class="container">
+    <br><br>
+    <h3 class="first">Lançamento de notas e faltas</h3><br>
+
+    <select type="number" [(ngModel)]="bimestreId" (ngModelChange)="getBimestre()">
+        <option *ngFor="let b of bimestres" [ngValue]="b.value.id">
+            {{ b.label }}
+        </option>
+    </select>
+    
+      <app-form-primeiro-bimestre *ngIf="bimestreId == 1"></app-form-primeiro-bimestre>
+      <app-form-segundo-bimestre  *ngIf="bimestreId == 2"></app-form-segundo-bimestre>
+      <app-form-terceiro-bimestre *ngIf="bimestreId == 3"></app-form-terceiro-bimestre>
+      <app-form-quarto-bimestre   *ngIf="bimestreId == 4"></app-form-quarto-bimestre>
+</div>

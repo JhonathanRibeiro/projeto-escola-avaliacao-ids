@@ -1,0 +1,127 @@
+<div *ngFor="let aluno of aluno" class="container">
+    <br>
+    <a routerLink="/lista-alunos">Voltar</a>
+
+    <table class="styled-table w-100">
+        <tr class="identificador-content">
+            <td>
+                <span class="identificador-nome">Aluno:</span>
+                <span> {{aluno.nome | uppercase}}</span>
+            </td>
+            <td>
+                <span class="identificador-nome">Matrícula:</span>
+                <span> {{aluno.matricula}}</span>
+            </td>
+            <td>
+                <span class="identificador-nome">Status:</span>
+                <span> {{aluno.status | uppercase}}</span>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <table class="text-center styled-table boletim">
+            <thead>
+                <tr class="bg-blue">
+                    <td ROWSPAN=2 class="text-center">
+                        <b>Disciplina</b>
+                    </td>
+                    <th colspan="1">1º Bimestre</th>
+                    <th colspan="1">2º Bimestre</th>
+                    <th colspan="1">3º Bimestre</th>
+                    <th colspan="1">4º Bimestre</th>
+                    <th rowspan="4">Média Final</th>
+                </tr>
+                <tr class="bg-blue">
+                    <th>Nota</th>
+                    <th>Nota</th>
+                    <th>Nota</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Participação em sala de aula</td>
+                    <td *ngFor="let pb of primeirobimestre">{{pb.n1}}</td>
+                    <td *ngFor="let sb of segundobimestre">{{sb.n1}}</td>
+                    <td *ngFor="let tb of terceirobimestre">{{tb.n1}}</td>
+                    <td *ngFor="let qb of quartobimestre">{{qb.n1}}</td>
+                </tr>
+                <tr>
+                    <td>Entrega das tarefas</td>
+                    <td *ngFor="let pb of primeirobimestre">{{pb.n2}}</td>
+                    <td *ngFor="let sb of segundobimestre">{{sb.n2}}</td>
+                    <td *ngFor="let tb of terceirobimestre">{{tb.n2}}</td>
+                    <td *ngFor="let qb of quartobimestre">{{qb.n2}}</td>
+                </tr>
+                <tr>
+                    <td>Trabalho Bimestral</td>
+                    <td *ngFor="let pb of primeirobimestre">{{pb.n3}}</td>
+                    <td *ngFor="let sb of segundobimestre">{{sb.n3}}</td>
+                    <td *ngFor="let tb of terceirobimestre">{{tb.n3}}</td>
+                    <td *ngFor="let qb of quartobimestre">{{qb.n3}}</td>
+                </tr>
+                <tr>
+                    <td>Prova Bimestral</td>
+                    <td *ngFor="let pb of primeirobimestre">{{pb.n4}}</td>
+                    <td *ngFor="let sb of segundobimestre">{{sb.n4}}</td>
+                    <td *ngFor="let tb of terceirobimestre">{{tb.n4}}</td>
+                    <td *ngFor="let qb of quartobimestre">{{qb.n4}}</td>
+                </tr>
+                <tr>
+                    <td class="titulo-atividade">Média bimestral</td>
+                    <td><span>{{mediaprimeirobimestre | number: '1.2-2'}}</span></td>
+                    <td><span>{{mediasegundobimestre | number: '1.2-2'}}</span></td>
+                    <td><span>{{mediaterceirobimestre | number: '1.2-2'}}</span></td>
+                    <td><span>{{mediaquartobimestre | number: '1.2-2'}}</span></td>
+                    <td class="bg-muted"><span>{{mediafinal | number: '1.2-2'}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody class="resultado-final">
+                <tr class="bg-blue">
+                    <th>Resultado final</th>
+                </tr>
+                <tr>
+                    <td class="text-center font-weight-bold">
+                        <span [ngClass]="{
+                            'text-success': situacao === 'Aprovado',
+                            'text-warning': situacao === 'Recuperação',
+                            'text-danger': situacao  === 'Reprovado'}">
+                            {{situacao | uppercase}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <strong>Frequência Escolar</strong>
+        <table class="text-center">
+            <thead>
+                <tr class="bg-blue">
+                    <th>Nome</th>
+                    <th>Dias</th>
+                    <th>Faltas</th>
+                    <th>Freq%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span> {{aluno.nome | uppercase}}</span>
+                    </td>
+                    <td>160</td>
+                    <td>
+                        <span> {{totalfaltas}}</span>
+                    </td>
+                    <td>
+                        <span> {{ calculoFrequencia(totalfaltas) | number: '1.0-0'}}%</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

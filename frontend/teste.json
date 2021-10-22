@@ -1,0 +1,577 @@
+[
+    {
+      "numeroAtendimentoPaciente": 3,
+      "usuario": {
+        "codigoPaciente": 33690,
+        "nomePaciente": "MARIA AILFELDER",
+        "dataNascimento": "1982-04-05T00:00:00.000Z",
+        "idade": 39,
+        "sexo": {
+          "codigo": 2,
+          "descricao": "FEMININO"
+        },
+        "bairro": {
+          "codigo": 227,
+          "descricao": "CECILIA"
+        },
+        "grauEscolaridade": null
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:09:13.478Z",
+      "dataFimOcorrencia": "2021-10-19T10:17:54.971Z",
+      "tempo": "1899-12-30T08:41:00.000Z",
+      "setor": {
+        "codigo": 2,
+        "descricao": "Setor Atendimento Clinico - Jhonatha"
+      },
+      "profissional": {
+        "codigo": 4422,
+        "nome": "JHONATHAN RIBEIRO"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 1358,
+        "descricao": "CONSULTA MEDICA EM ATENCAO ESPECIALIZADA",
+        "classificacao": 30101007
+      },
+      "procedimentos_Atendimentos_Realizados": [
+        {
+          "codigo": 6023,
+          "descricao": "SAMU 192:ATENDIMENTO DAS CHAMADAS RECEBIDAS PELA CENTRAL DE REGULACAO DAS URGENCIAS",
+          "classificacao": 30103001
+        }
+      ],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "2 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [
+        {
+          "codigo": 10,
+          "descricao": "Pré-natal"
+        }
+      ],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "O03",
+        "doenca": "ABORTO ESPONTANEO"
+      },
+      "gestante": {
+        "gestante": 1,
+        "dataUltimaMenstruacao": "2021-10-10T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 59,
+      "usuario": {
+        "codigoPaciente": 4856133,
+        "nomePaciente": "SANDER TESTE",
+        "dataNascimento": "1999-01-01T00:00:00.000Z",
+        "idade": 22,
+        "sexo": {
+          "codigo": 1,
+          "descricao": "MASCULINO"
+        },
+        "bairro": {
+          "codigo": 598,
+          "descricao": "680s"
+        },
+        "grauEscolaridade": null
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:52:34.921Z",
+      "dataFimOcorrencia": "2021-10-19T10:53:11.114Z",
+      "tempo": "1899-12-30T00:00:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 4529,
+        "descricao": "ABCIXIMABE",
+        "classificacao": 60305001
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "4 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 4,
+      "usuario": {
+        "codigoPaciente": 33690,
+        "nomePaciente": "MARIA AILFELDER",
+        "dataNascimento": "1982-04-05T00:00:00.000Z",
+        "idade": 39,
+        "sexo": {
+          "codigo": 2,
+          "descricao": "FEMININO"
+        },
+        "bairro": {
+          "codigo": 227,
+          "descricao": "CECILIA"
+        },
+        "grauEscolaridade": null
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:09:13.478Z",
+      "dataFimOcorrencia": "2021-10-19T10:17:54.971Z",
+      "tempo": "1899-12-30T08:41:00.000Z",
+      "setor": {
+        "codigo": 2,
+        "descricao": "Setor Atendimento Clinico - Jhonatha"
+      },
+      "profissional": {
+        "codigo": 4422,
+        "nome": "JHONATHAN RIBEIRO"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 1358,
+        "descricao": "CONSULTA MEDICA EM ATENCAO ESPECIALIZADA",
+        "classificacao": 30101007
+      },
+      "procedimentos_Atendimentos_Realizados": [
+        {
+          "codigo": 6023,
+          "descricao": "SAMU 192:ATENDIMENTO DAS CHAMADAS RECEBIDAS PELA CENTRAL DE REGULACAO DAS URGENCIAS",
+          "classificacao": 30103001
+        }
+      ],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "2 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [
+        {
+          "codigo": 2,
+          "descricao": "Dengue"
+        },
+        {
+          "codigo": 10,
+          "descricao": "Pré-natal"
+        }
+      ],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "O03",
+        "doenca": "ABORTO ESPONTANEO"
+      },
+      "gestante": {
+        "gestante": 1,
+        "dataUltimaMenstruacao": "2021-10-10T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 1,
+      "usuario": {
+        "codigoPaciente": 4856159,
+        "nomePaciente": "sander portal",
+        "dataNascimento": "1999-02-15T00:00:00.000Z",
+        "idade": 22,
+        "sexo": {
+          "codigo": 1,
+          "descricao": "MASCULINO"
+        },
+        "bairro": {
+          "codigo": 669,
+          "descricao": "AGUIA BOA"
+        },
+        "grauEscolaridade": null
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:56:52.997Z",
+      "dataFimOcorrencia": "2021-10-19T10:57:32.109Z",
+      "tempo": "1899-12-30T00:00:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 4529,
+        "descricao": "ABCIXIMABE",
+        "classificacao": 60305001
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "5 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 1,
+      "usuario": {
+        "codigoPaciente": 21268,
+        "nomePaciente": "SANDERLEI DOS ANJOS MOREIRA",
+        "dataNascimento": "1976-04-22T00:00:00.000Z",
+        "idade": 45,
+        "sexo": {
+          "codigo": 1,
+          "descricao": "MASCULINO"
+        },
+        "bairro": {
+          "codigo": 96,
+          "descricao": "JARDIM BOM PASTOR"
+        },
+        "grauEscolaridade": {
+          "codigo": 99,
+          "descricao": "SEM INFORMACAO"
+        }
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:58:04.303Z",
+      "dataFimOcorrencia": "2021-10-19T10:58:33.585Z",
+      "tempo": "1899-12-30T00:00:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 4529,
+        "descricao": "ABCIXIMABE",
+        "classificacao": 60305001
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "5 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 5,
+      "usuario": {
+        "codigoPaciente": 33690,
+        "nomePaciente": "MARIA AILFELDER",
+        "dataNascimento": "1982-04-05T00:00:00.000Z",
+        "idade": 39,
+        "sexo": {
+          "codigo": 2,
+          "descricao": "FEMININO"
+        },
+        "bairro": {
+          "codigo": 227,
+          "descricao": "CECILIA"
+        },
+        "grauEscolaridade": null
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T10:09:13.478Z",
+      "dataFimOcorrencia": "2021-10-19T10:17:54.971Z",
+      "tempo": "1899-12-30T08:41:00.000Z",
+      "setor": {
+        "codigo": 2,
+        "descricao": "Setor Atendimento Clinico - Jhonatha"
+      },
+      "profissional": {
+        "codigo": 4422,
+        "nome": "JHONATHAN RIBEIRO"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 1358,
+        "descricao": "CONSULTA MEDICA EM ATENCAO ESPECIALIZADA",
+        "classificacao": 30101007
+      },
+      "procedimentos_Atendimentos_Realizados": [
+        {
+          "codigo": 6023,
+          "descricao": "SAMU 192:ATENDIMENTO DAS CHAMADAS RECEBIDAS PELA CENTRAL DE REGULACAO DAS URGENCIAS",
+          "classificacao": 30103001
+        }
+      ],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "2 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [
+        {
+          "codigo": 2,
+          "descricao": "Dengue"
+        },
+        {
+          "codigo": 10,
+          "descricao": "Pré-natal"
+        }
+      ],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "O25",
+        "doenca": "DESNUTRICAO NA GRAVIDEZ"
+      },
+      "gestante": {
+        "gestante": 1,
+        "dataUltimaMenstruacao": "2021-10-10T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 23,
+      "usuario": {
+        "codigoPaciente": 27708,
+        "nomePaciente": "ABEGAIL MIRANDA DE PAULA DANIEL",
+        "dataNascimento": "1956-12-16T00:00:00.000Z",
+        "idade": 64,
+        "sexo": {
+          "codigo": 2,
+          "descricao": "FEMININO"
+        },
+        "bairro": {
+          "codigo": 399,
+          "descricao": "A BOA"
+        },
+        "grauEscolaridade": {
+          "codigo": 99,
+          "descricao": "SEM INFORMACAO"
+        }
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T11:06:22.552Z",
+      "dataFimOcorrencia": "2021-10-19T11:07:03.624Z",
+      "tempo": "1899-12-30T00:00:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 4530,
+        "descricao": "CLORIDRATO DE TIROFIBANA",
+        "classificacao": 60305002
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "2 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 5,
+      "usuario": {
+        "codigoPaciente": 23579,
+        "nomePaciente": "ABRAAO RIBEIRO SOARES",
+        "dataNascimento": "2000-02-28T00:00:00.000Z",
+        "idade": 21,
+        "sexo": {
+          "codigo": 1,
+          "descricao": "MASCULINO"
+        },
+        "bairro": {
+          "codigo": 138,
+          "descricao": "JARDIM BOA VISTA I"
+        },
+        "grauEscolaridade": {
+          "codigo": 99,
+          "descricao": "SEM INFORMACAO"
+        }
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T13:26:00.761Z",
+      "dataFimOcorrencia": "2021-10-19T13:28:05.973Z",
+      "tempo": "1899-12-30T02:05:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 94,
+        "descricao": "ACIDO URSODESOXICOLICO 50 MG (POR COMPRIMIDO)",
+        "classificacao": 60463003
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "10 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    },
+    {
+      "numeroAtendimentoPaciente": 1,
+      "usuario": {
+        "codigoPaciente": 11805,
+        "nomePaciente": "ACIR FRANCISCO DE PAUL",
+        "dataNascimento": "1979-12-29T00:00:00.000Z",
+        "idade": 41,
+        "sexo": {
+          "codigo": 1,
+          "descricao": "MASCULINO"
+        },
+        "bairro": {
+          "codigo": 668,
+          "descricao": "TACANICA DOS SANTANA"
+        },
+        "grauEscolaridade": {
+          "codigo": 99,
+          "descricao": "SEM INFORMACAO"
+        }
+      },
+      "dataSolicitacao": "2021-10-19T00:00:00.000Z",
+      "dataInicioOcorrencia": "2021-10-19T13:30:10.584Z",
+      "dataFimOcorrencia": "2021-10-19T13:30:40.717Z",
+      "tempo": "1899-12-30T00:00:00.000Z",
+      "setor": {
+        "codigo": 1,
+        "descricao": "SETOR SANDER - ATENDIMENTO"
+      },
+      "profissional": {
+        "codigo": 4424,
+        "nome": "SANDER PROFISSIONAL"
+      },
+      "categoriaProfissional": {
+        "codigo": 27,
+        "descricao": "MEDICO CLINICO GERAL"
+      },
+      "procedimento_Consulta": {
+        "codigo": 4528,
+        "descricao": "ESTREPTOQUINASE 250000 UI",
+        "classificacao": 60305003
+      },
+      "procedimentos_Atendimentos_Realizados": [],
+      "nivelUrgencia": {
+        "codigo": 1,
+        "descricao": "5 Minutos"
+      },
+      "resultadosExames": [],
+      "problemasCondicoesAvaliadas": [],
+      "cIAP": null,
+      "prescricoesMedicamentos": [],
+      "procedimento": null,
+      "cID": {
+        "codigo": "T740",
+        "doenca": "ABANDONO"
+      },
+      "gestante": {
+        "gestante": 0,
+        "dataUltimaMenstruacao": "1899-12-30T00:00:00.000Z"
+      },
+      "saidaAtendimento": []
+    }
+  ]

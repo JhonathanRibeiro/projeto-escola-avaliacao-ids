@@ -1,0 +1,13 @@
+table {
+    border-radius: 5px;
+    width: 90%;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+}
+
+th,
+td {
+    padding: 0.25rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}

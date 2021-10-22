@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Helvetica Neue", sans-serif;
+    background: #fafafa;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.bg-secondary {
+    background: #3e67a8;
+    color: #fff;
+}
+
+.content {
+    min-height: 100%;
+    position: relative;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.danger {
+    color: #e35e6b;
+}
+
+.v-middle {
+    vertical-align: middle;
+}
+
+.identificador-content {
+    width: 100%;
+}
+
+.bg-blue {
+    background: #3f51b5;
+    color: #f1f1f1;
+    font-weight: 100!important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.identificador-nome {
+    background: #3f51b5;
+    font-weight: 400;
+    padding: 3px 12px;
+    margin-left: -1px;
+    color: #fff;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.titulo-atividade {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.bg-muted {
+    background-color: #cccc;
+}
+
+.text-success {
+    color: #28a745!important;
+}
+
+.text-danger {
+    color: #dc3545!important;
+}
+
+.text-warning {
+    color: #ffc107!important;
+}
+.npb {
+    border: 1px solid orange;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.input {
+    align-items: center;
+    width: 50px;
+    margin: 0!important;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(107, 107, 107, 0.075);
+    display: table;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+input[type=button] {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    text-decoration: none;
+}
+
+input {
+    width: 100px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input:focus {
+    outline: none;
+}
+
+select {
+    padding: 7px 0.75em;
+    font-size: 14px;
+}
+
+thead tr th, td {
+    border: 1px solid #fdfdfd;
+}
+
+thead tr {
+    background-color: #2b58a0e6;
+    color: #ffffff;
+    text-align: center;
+}
+
+

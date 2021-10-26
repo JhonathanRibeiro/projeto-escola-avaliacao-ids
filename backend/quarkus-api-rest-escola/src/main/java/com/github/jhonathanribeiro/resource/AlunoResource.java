@@ -10,11 +10,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.github.jhonathanribeiro.entity.Aluno;
+import com.github.jhonathanribeiro.repository.AlunoRepository;
 
 @Path("api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AlunoResource {
+
+    AlunoRepository alunoRepository;
 
     @GET
     @Path("/alunos")
@@ -28,4 +31,10 @@ public class AlunoResource {
         return Aluno.findById(id);
         
     }
+
+    // @GET
+    // @Path("/aluno/mediasimples")
+    // public getMediaSimples() {
+    //      alunoRepository.mediaSimples();        
+    // }
 }

@@ -16,7 +16,7 @@ export class LancarnotasComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private api: AlunoService
+    private api: AlunoService<any>
   ) {
     this.bimestres = [
       { label: 'Primeiro bimestre', value: { id: 1, name: 'Primeiro Bimestre' } },
@@ -32,8 +32,6 @@ export class LancarnotasComponent implements OnInit {
 
   getBimestre() { // Função que foi chamada
     this.bimestreId = +this.bimestreId;
-    console.log("BimestreID " + this.bimestreId);
-    console.log('teste', this.bimestreId)
   }
 
   salvarDadosFormulario() {

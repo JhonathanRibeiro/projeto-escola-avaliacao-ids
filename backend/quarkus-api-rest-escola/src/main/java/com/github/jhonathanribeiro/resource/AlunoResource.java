@@ -12,11 +12,14 @@ import javax.ws.rs.core.MediaType;
 import com.github.jhonathanribeiro.entity.Aluno;
 import com.github.jhonathanribeiro.repository.AlunoRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Path("api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AlunoResource {
 
+    @Autowired
     AlunoRepository alunoRepository;
 
     @GET
@@ -29,12 +32,11 @@ public class AlunoResource {
     @Path("/aluno/{id}")
     public Aluno getAlunoById(@PathParam("id") Long id) {
         return Aluno.findById(id);
-        
     }
 
-    // @GET
-    // @Path("/aluno/mediasimples")
-    // public getMediaSimples() {
-    //      alunoRepository.mediaSimples();        
-    // }
+    @GET
+    @Path("/aluno/teste")
+    public List<Aluno> getNotas() {
+        return alunoRepository.findByNotasAluno();
+    }
 }

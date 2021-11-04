@@ -11,7 +11,4 @@ public class Aluno extends PanacheEntity{
     public String status;
     public String situacao;
 
-
-    
-
 }

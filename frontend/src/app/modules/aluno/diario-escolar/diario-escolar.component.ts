@@ -2,6 +2,7 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Aluno } from 'src/app/models/aluno.model';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-diario-escolar',
@@ -31,6 +32,8 @@ export class DiarioEscolarComponent implements OnInit {
   totalfaltas: number = 0;
   presenca: number = 0;
   situacao: string = '';
+
+  totalNotas: number = 0;
 
   constructor(
     private api: AlunoService,
@@ -83,14 +86,13 @@ export class DiarioEscolarComponent implements OnInit {
   }
 
   public calculoMediaFinal(data: any, res: any) {
-    let notas = res
-
-    // console.log(notas)
-
-    // let total = [(data[0] * 1.5) + (data[1] * 2.5) + (data[2] * 3) + (data[3] * 3)]  
-    // console.log(Object.assign(total))
+    let total = (data[0] * 1.5) + (data[1] * 2.5) + (data[2] * 3) + (data[3] * 3);
+    this.totalNotas = this.totalNotas + total;  
+    console.log(data);
+    console.log(total);
+    console.log(this.totalNotas);
+    this.mediafinal = total
   }
-
 
   public calculoFrequencia(freq: any) {
     let faltas = freq;

@@ -16,7 +16,7 @@ export class LancarnotasComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private api: AlunoService<any>
+    private api: AlunoService
   ) {
     this.bimestres = [
       { label: 'Primeiro bimestre', value: { id: 1, name: 'Primeiro Bimestre' } },

@@ -82,17 +82,17 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     var obj: [] = this.formPrimeiroBimestre.value;
 
     this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-      this.formPrimeiroBimestre.patchValue({
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
-        primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
-        segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
-        terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
-        quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-        faltas: dados.bimestres[0].faltas
-      });
+      // this.formPrimeiroBimestre.patchValue({
+      //   nome: dados.nome,
+      //   matricula: dados.matricula,
+      //   status: dados.status,
+      //   situacao: dados.situacao,
+      //   primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
+      //   segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
+      //   terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
+      //   quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
+      //   faltas: dados.bimestres[0].faltas
+      // });
     });
   }
 }

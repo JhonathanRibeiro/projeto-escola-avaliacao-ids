@@ -20,6 +20,11 @@ export class DiarioEscolarComponent implements OnInit {
   mediaterceirobimestre: number;
   mediaquartobimestre: number;
 
+  _primeirobimestre: number;
+  _segundobimestre: number;
+  _terceirobimestre: number;
+  _quartobimestre: number;
+
   mediasporbimestre: Array<any>;
 
   mediafinal: any;
@@ -33,10 +38,10 @@ export class DiarioEscolarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAlunoById();
+    this.situacaoFinalAluno();
   }
 
-  getAlunoById(): void {
+  public situacaoFinalAluno(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(alunos => {
       this.aluno = Array(alunos)
@@ -47,17 +52,13 @@ export class DiarioEscolarComponent implements OnInit {
         this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
         const result = Array(res);
 
-        const gradList = [
-          res.n1,
-          res.n2,
-          res.n3,
-          res.n4
-        ]
+        const gradList = [res.n1,res.n2,res.n3,res.n4];
 
-        console.log(this.calculoNotaFinal(res));
+        const media = parseFloat(this.calculoMediaBimestral(gradList).toFixed(2));
+        const mediaFinal = this.calculoMediaFinal(gradList, res);
 
-        const media = parseFloat(this.getMediaBimestral(gradList).toFixed(2));
         this.mediaBimestral(media, result, res);
+        this.mediaFinal(mediaFinal, res);
 
         if (this.presenca < 75 && this.mediafinal < 5) {
           this.situacao = 'Reprovado';
@@ -72,44 +73,55 @@ export class DiarioEscolarComponent implements OnInit {
     });
   }
 
-  public getMediaBimestral(gradeList: any) {
-    let items = gradeList.length
+  public calculoMediaBimestral(gradeList: any) {
+    let notas = gradeList.length
     let mediaBimestral = 0
-    for (let i = 0; i < items; i++) {
+    for (let i = 0; i < notas; i++) {
       mediaBimestral += gradeList[i]
     }
     return mediaBimestral
   }
 
-  public calculoNotaFinal(gradeList: any) {
-    let notas = gradeList;
-    Array(notas).filter(res => {
-      //multiplicando as notas pelo peso das disciplinas
-      let notaPrimDisciplina = res.n1 * 1.5
-      let notaSegDisciplina = res.n2 * 2.5
-      let notaTerDisciplina = res.n3 * 3
-      let notaQuaDisciplina = res.n4 * 3
+  public calculoMediaFinal(data: any, res: any) {
+    let notas = res
 
-      const gradeList = [
-        notaPrimDisciplina,
-        notaSegDisciplina,
-        notaTerDisciplina,
-        notaQuaDisciplina
-      ];
+    // console.log(notas)
 
-      const total  = gradeList.reduce((total, currentElement) => total + currentElement)
-      console.log(total)
-    })
+    // let total = [(data[0] * 1.5) + (data[1] * 2.5) + (data[2] * 3) + (data[3] * 3)]  
+    // console.log(Object.assign(total))
   }
+
 
   public calculoFrequencia(freq: any) {
     let faltas = freq;
     let dias = 160;
 
-    let result = dias - faltas;
-    let n = result / dias;
-    let a = n * 100;
-    return a;
+    let diff = dias - faltas;
+    let res = diff / dias;
+    let frequencia = res * 100;
+    return frequencia;
+  }
+
+  public mediaFinal(media: any, res: any) {
+    switch (res.id) {
+      case 1:
+        this._primeirobimestre = res ;
+        break;
+      case 2:
+        this._segundobimestre = media ;
+        break;
+      case 3:
+        this._terceirobimestre = media ;
+        break;
+      case 4:
+        this._quartobimestre = media ;
+        break;
+      default:
+        break;
+    }
+    
+    // console.log(this._primeirobimestre, this._segundobimestre, this._terceirobimestre, this._quartobimestre)
+
   }
 
   public mediaBimestral(media: number, result: any, res: any): void {

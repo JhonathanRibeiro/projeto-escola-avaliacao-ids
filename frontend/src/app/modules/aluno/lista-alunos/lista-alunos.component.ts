@@ -19,14 +19,4 @@ export class ListaAlunosComponent implements OnInit {
       this.alunos = aluno;
     });
   }
-
-  private fieldArray: Array<any> = [{ evaluationRuleField: "", condition: "condition", value: "value" }];
-
-  evaluationRuleFields = [
-    { value: "field_1", valueFieldType: 'text', viewValue: "Field 1" },
-    { value: "field_2", valueFieldType: 'dropdown', viewValue: "Field 2" },
-    { value: "field_3", valueFieldType: 'text', viewValue: "Field 3" },
-    { value: "field_4", valueFieldType: 'multiselect', viewValue: "Field 4" },
-    { value: "field_5", valueFieldType: 'dropdown', viewValue: "Field 5" }
-  ]
 }

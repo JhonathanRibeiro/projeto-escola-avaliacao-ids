@@ -30,13 +30,18 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.api.getAlunoById(id).subscribe(dados => {
-    this.formPrimeiroBimestre.patchValue({
+      this.formPrimeiroBimestre.patchValue({
+        nome: dados.nome,
+        matricula: dados.matricula,
+        status: dados.status,
+        situacao: dados.situacao,
         primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
         segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
         terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
         quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-        faltas_primeiro_bimestre: dados.bimestres[0].faltas
+        faltas: dados.bimestres[0].faltas
       });
+      console.log(dados)
     });
   }
 
@@ -76,18 +81,17 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
     var obj: [] = this.formPrimeiroBimestre.value;
 
-    this.api.atualizaBimestre(id, obj).subscribe(data =>{
-      console.log(data);
+    this.api.atualizaBimestre(id, obj).subscribe(dados =>{
       this.formPrimeiroBimestre.patchValue({
-        nome: data.nome,
-        matricula: data.matricula,
-        status: data.status,
-        situacao: data.situacao,
-        primeira_nota_primeiro_bimestre: data.bimestres[0].n1,
-        segunda_nota_primeiro_bimestre: data.bimestres[0].n2,
-        terceira_nota_primeiro_bimestre: data.bimestres[0].n3,
-        quarta_nota_primeiro_bimestre: data.bimestres[0].n4,
-        faltas_primeiro_bimestre: data.bimestres[0].faltas
+        nome: dados.nome,
+        matricula: dados.matricula,
+        status: dados.status,
+        situacao: dados.situacao,
+        primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
+        segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
+        terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
+        quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
+        faltas: dados.bimestres[0].faltas
       });
     });
   }

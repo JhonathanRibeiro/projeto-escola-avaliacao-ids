@@ -69,10 +69,10 @@
                 </tr>
                 <tr>
                     <td class="titulo-atividade">Média bimestral</td>
-                    <td><span>{{mediaprimeirobimestre | number: '1.2-2'}}</span></td>
-                    <td><span>{{mediasegundobimestre | number: '1.2-2'}}</span></td>
-                    <td><span>{{mediaterceirobimestre | number: '1.2-2'}}</span></td>
-                    <td><span>{{mediaquartobimestre | number: '1.2-2'}}</span></td>
+                    <td><strong>{{mediaprimeirobimestre | number: '1.2-2'}}</strong></td>
+                    <td><strong>{{mediasegundobimestre | number: '1.2-2'}}</strong></td>
+                    <td><strong>{{mediaterceirobimestre | number: '1.2-2'}}</strong></td>
+                    <td><strong>{{mediaquartobimestre | number: '1.2-2'}}</strong></td>
                     <td class="bg-muted"><span>{{mediafinal | number: '1.2-2'}}</span></td>
                 </tr>
             </tbody>
@@ -86,9 +86,10 @@
                 <tr>
                     <td class="text-center font-weight-bold">
                         <span [ngClass]="{
-                            'text-success': situacao === 'Aprovado',
-                            'text-warning': situacao === 'Recuperação',
-                            'text-danger': situacao  === 'Reprovado'}">
+                            'text-success': situacao  === 'Aprovado',
+                            'text-warning': situacao  === 'Recuperação',
+                            'text-danger':  situacao  === 'Reprovado',
+                            'text-danger':  situacao  === 'Reprovado por falta'}">
                             {{situacao | uppercase}}
                         </span>
                     </td>

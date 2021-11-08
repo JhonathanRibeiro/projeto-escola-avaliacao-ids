@@ -1,4 +1,4 @@
-<form [formGroup]="formPrimeiroBimestre" (ngSubmit)="salvarDadosFormulario();event.preventDefault();">
+<form [formGroup]="formPrimeiroBimestre" (ngSubmit)="salvarDadosFormulario()">
 
 <table class="styled-table">
     <thead>
@@ -26,6 +26,18 @@
                     <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
             </td>
+
+            <td>
+                <input type="text" formControlName="faltas_primeiro_bimestre">
+                <div *ngIf="!faltas_primeiro_bimestre.pristine && faltas_primeiro_bimestre.errors">
+                    <p *ngIf="faltas_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                </div>
+            </td>
+        </tr>
+       
+        <tr>
+            <th class="titulo-atividade">Entrega das tarefas</th>
+            <td>2.5</td>
             <td>
                 <input type="text" formControlName="segunda_nota_primeiro_bimestre">
                 <div *ngIf="!segunda_nota_primeiro_bimestre.pristine && segunda_nota_primeiro_bimestre.errors">
@@ -33,9 +45,10 @@
                 </div>
             </td>
         </tr>
+
         <tr>
-            <th class="titulo-atividade">Entrega das tarefas</th>
-            <td>2.5</td>
+            <th class="titulo-atividade">Trabalho Bimestral</th>
+            <td>3.0</td>
             <td>
                 <input type="text" formControlName="terceira_nota_primeiro_bimestre">
                 <div *ngIf="!terceira_nota_primeiro_bimestre.pristine && terceira_nota_primeiro_bimestre.errors">
@@ -43,21 +56,15 @@
                 </div>
             </td>
         </tr>
+
         <tr>
-            <th class="titulo-atividade">Trabalho Bimestral</th>
+            <th class="titulo-atividade">Prova Bimestral</th>
             <td>3.0</td>
             <td>
                 <input type="text" formControlName="quarta_nota_primeiro_bimestre">
                 <div *ngIf="!quarta_nota_primeiro_bimestre.pristine && quarta_nota_primeiro_bimestre.errors">
                     <p *ngIf="quarta_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <th class="titulo-atividade">Prova Bimestral</th>
-            <td>3.0</td>
-            <td>
-                <input type="text" formControlName="faltas_primeiro_bimestre">
             </td>
         </tr>
     </tbody>

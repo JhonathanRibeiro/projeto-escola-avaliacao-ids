@@ -2,7 +2,6 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Aluno } from 'src/app/models/aluno.model';
-import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-diario-escolar',
@@ -21,19 +20,10 @@ export class DiarioEscolarComponent implements OnInit {
   mediaterceirobimestre: number;
   mediaquartobimestre: number;
 
-  _primeirobimestre: number;
-  _segundobimestre: number;
-  _terceirobimestre: number;
-  _quartobimestre: number;
-
-  mediasporbimestre: Array<any>;
-
   mediafinal: any;
   totalfaltas: number = 0;
   presenca: number = 0;
   situacao: string = '';
-
-  totalNotas: number = 0;
 
   constructor(
     private api: AlunoService,
@@ -50,20 +40,16 @@ export class DiarioEscolarComponent implements OnInit {
       this.aluno = Array(alunos)
 
       alunos.bimestres.filter((res: any) => {
-        this.totalfaltas = this.totalfaltas + parseInt(res.faltas)
-
-        this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
         const result = Array(res);
+        this.calculoMediaPonderada(res)
+        this.notasBimestre(result, res);
+        
+        this.totalfaltas = this.totalfaltas + parseInt(res.faltas)
+        this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
 
-        const gradList = [res.n1,res.n2,res.n3,res.n4];
-
-        const media = parseFloat(this.calculoMediaBimestral(gradList).toFixed(2));
-        const mediaFinal = this.calculoMediaFinal(gradList, res);
-
-        this.mediaBimestral(media, result, res);
-        this.mediaFinal(mediaFinal, res);
-
-        if (this.presenca < 75 && this.mediafinal < 5) {
+        if(this.presenca < 75) {
+          this.situacao = 'Reprovado por falta'
+        }else if (this.mediafinal < 5) {
           this.situacao = 'Reprovado';
         } else if (this.mediafinal >= 5 && this.mediafinal < 6) {
           this.situacao = 'Recuperação';
@@ -76,22 +62,26 @@ export class DiarioEscolarComponent implements OnInit {
     });
   }
 
-  public calculoMediaBimestral(gradeList: any) {
-    let notas = gradeList.length
-    let mediaBimestral = 0
-    for (let i = 0; i < notas; i++) {
-      mediaBimestral += gradeList[i]
+  public calculoMediaPonderada(nota: any) {
+    if(nota.id == 1){
+      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
+      this.mediaprimeirobimestre = total / 10
     }
-    return mediaBimestral
-  }
+    if(nota.id == 2) {
+      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
+      this.mediasegundobimestre = total / 10
+    }
+    if(nota.id == 3) {
+      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
+      this.mediaterceirobimestre = total / 10
+    }
+    if(nota.id == 4) {
+      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
+      this.mediaquartobimestre = total / 10
+    }
 
-  public calculoMediaFinal(data: any, res: any) {
-    let total = (data[0] * 1.5) + (data[1] * 2.5) + (data[2] * 3) + (data[3] * 3);
-    this.totalNotas = this.totalNotas + total;  
-    console.log(data);
-    console.log(total);
-    console.log(this.totalNotas);
-    this.mediafinal = total
+    let somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
+    this.mediafinal = somaMediaBimestres / 4
   }
 
   public calculoFrequencia(freq: any) {
@@ -104,45 +94,19 @@ export class DiarioEscolarComponent implements OnInit {
     return frequencia;
   }
 
-  public mediaFinal(media: any, res: any) {
-    switch (res.id) {
-      case 1:
-        this._primeirobimestre = res ;
-        break;
-      case 2:
-        this._segundobimestre = media ;
-        break;
-      case 3:
-        this._terceirobimestre = media ;
-        break;
-      case 4:
-        this._quartobimestre = media ;
-        break;
-      default:
-        break;
-    }
-    
-    // console.log(this._primeirobimestre, this._segundobimestre, this._terceirobimestre, this._quartobimestre)
-
-  }
-
-  public mediaBimestral(media: number, result: any, res: any): void {
+  public notasBimestre(result: any, res: any): void {
     switch (res.id) {
       case 1:
         this.primeirobimestre = result;
-        this.mediaprimeirobimestre = media / 4;
         break;
       case 2:
         this.segundobimestre = result;
-        this.mediasegundobimestre = media / 4;
         break;
       case 3:
         this.terceirobimestre = result;
-        this.mediaterceirobimestre = media / 4;
         break;
       case 4:
         this.quartobimestre = result;
-        this.mediaquartobimestre = media / 4;
         break;
       default:
         break;

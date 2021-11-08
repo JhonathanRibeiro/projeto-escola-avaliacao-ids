@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
 
 @Component({
@@ -16,7 +16,6 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private api: AlunoService,
     private route: ActivatedRoute
     ) { }
@@ -30,18 +29,13 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.api.getAlunoById(id).subscribe(dados => {
-      this.formPrimeiroBimestre.patchValue({
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
+      this.formPrimeiroBimestre = this.fb.group({
         primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
         segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
         terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
         quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-        faltas: dados.bimestres[0].faltas
-      });
-      console.log(dados)
+        faltas_primeiro_bimestre: dados.bimestres[0].faltas
+      })
     });
   }
 
@@ -76,23 +70,14 @@ export class FormPrimeiroBimestreComponent implements OnInit {
   }
 
   salvarDadosFormulario() {
-    // console.log(this.formPrimeiroBimestre.value);
-    // const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    console.log('value'+this.formPrimeiroBimestre.value)
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
 
-    // var obj: [] = this.formPrimeiroBimestre.value;
+    var obj: [] = this.formPrimeiroBimestre.value;
 
-    // this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-    //   this.formPrimeiroBimestre.patchValue({
-    //     nome: dados.nome,
-    //     matricula: dados.matricula,
-    //     status: dados.status,
-    //     situacao: dados.situacao,
-    //     primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
-    //     segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
-    //     terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
-    //     quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-    //     faltas: dados.bimestres[0].faltas
-    //   });
-    // });
+    this.api.atualizaBimestre(id, obj).subscribe(dados =>{
+      alert('ok')
+      console.log(dados);
+    });
   }
 }

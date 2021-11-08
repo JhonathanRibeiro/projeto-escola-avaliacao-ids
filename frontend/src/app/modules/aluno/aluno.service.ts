@@ -26,11 +26,7 @@ export class AlunoService {
   }
 
   public atualizaBimestre(id: number, obj: any): Observable<any> {
-    return this.http.put(`${this.apiURL}/alunos/${id}`, obj)
-      .pipe(map((item: any)=>{
-       console.log(item); 
-      return item
-      }));
+    return this.http.put(`${this.apiURL}/alunos/${id}`, obj);
   }
 
 }

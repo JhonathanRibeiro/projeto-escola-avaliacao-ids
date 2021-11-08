@@ -46,6 +46,7 @@ export class DiarioEscolarComponent implements OnInit {
     this.situacaoFinalAluno();
   }
 
+  //Irá cruzar as informações obtidas para retornar a situação final do aluno
   public situacaoFinalAluno(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(alunos => {
@@ -74,42 +75,45 @@ export class DiarioEscolarComponent implements OnInit {
     });
   }
 
+  //Retorna a media ponderada de cada bimestre e a media final
   public calculoMediaPonderada(nota: any) {
     switch (nota.id) {
       case 1:
-        let mediaPrimeiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        const mediaPrimeiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
         this.mediaprimeirobimestre = mediaPrimeiroBimestre / this.somaPesos
         break;
       case 2:
-        let mediaSegundoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        const mediaSegundoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
         this.mediasegundobimestre = mediaSegundoBimestre / this.somaPesos
         break;
       case 3:
-        let mediaTerceiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        const mediaTerceiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
       this.mediaterceirobimestre = mediaTerceiroBimestre / this.somaPesos
         break;
       case 4:
-        let mediaQuartoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        const mediaQuartoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
         this.mediaquartobimestre = mediaQuartoBimestre / this.somaPesos
         break;
       default:
         break;
     }
-
-    let somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
+    //soma todas as medias bimestrais e realiza o calculo da media simples, retornando a media final do aluno.
+    const somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
     this.mediafinal = somaMediaBimestres / this.somaBimestres
   }
-
+  
+  // Retorna a porcentagem de frequência do aluno
   public calculoFrequencia(freq: any) {
-    let faltas = freq;
-    let dias = this.totalDiasLetivos;
+    const faltas = freq;
+    const dias = this.totalDiasLetivos;
 
-    let diff = dias - faltas;
-    let res = diff / dias;
-    let frequencia = res * 100;
+    const diff = dias - faltas;
+    const res = diff / dias;
+    const frequencia = res * 100;
     return frequencia;
   }
 
+  // Exibe as notas dos bimestres
   public notasBimestre(result: any, res: any): void {
     switch (res.id) {
       case 1:

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Aluno } from 'src/app/models/aluno.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class AlunoService {
   }
 
   public atualizaBimestre(id: number, obj: any): Observable<any> {
-    return this.http.put(`${this.apiURL}/alunos/${id}`, obj);
+    return this.http.put<Aluno>(`${this.apiURL}/alunos/${id}`, obj);
   }
 
 }

@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
 
 @Component({
@@ -13,6 +12,7 @@ import { AlunoService } from '../../aluno.service';
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
   aluno: any;
+  data: any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,12 +30,16 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
     this.api.getAlunoById(id).subscribe(dados => {
       this.formPrimeiroBimestre = this.fb.group({
+        nome: dados.nome,
+        matricula: dados.matricula,
+        status: dados.status,
+        situacao: dados.situacao,
         primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
         segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
         terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
         quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
         faltas_primeiro_bimestre: dados.bimestres[0].faltas
-      })
+      });
     });
   }
 
@@ -70,14 +74,26 @@ export class FormPrimeiroBimestreComponent implements OnInit {
   }
 
   salvarDadosFormulario() {
-    console.log('value'+this.formPrimeiroBimestre.value)
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.api.getAlunoById(id).subscribe(dados => {
+      var obj = {
+        nome: dados.nome,
+        matricula: dados.matricula,
+        status: dados.status,
+        situacao: dados.situacao,
+        bimestres: [{
+          id: dados.bimestres[0].id,
+          primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
+          segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
+          terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
+          quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
+          faltas_primeiro_bimestre: dados.bimestres[0].faltas
+        }]
+      };
 
-    var obj: [] = this.formPrimeiroBimestre.value;
-
-    this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-      alert('ok')
-      console.log(dados);
+      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
+          console.log(dados);
+      });
     });
   }
 }

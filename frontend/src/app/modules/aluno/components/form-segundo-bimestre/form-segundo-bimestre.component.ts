@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Aluno } from 'src/app/models/aluno.model';
 import { AlunoService } from '../../aluno.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AlunoService } from '../../aluno.service';
 })
 export class FormSegundoBimestreComponent implements OnInit {
   formSegundoBimestre: FormGroup;
+  params: Aluno;
 
   constructor(
     private fb: FormBuilder,
@@ -18,6 +20,7 @@ export class FormSegundoBimestreComponent implements OnInit {
 
   ngOnInit() {
     this.formularioSegundoBimestre();
+    this.populaDadosFormulario();
   }
 
   formularioSegundoBimestre() {
@@ -39,36 +42,22 @@ export class FormSegundoBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_segundo_bimestre: dados.bimestres[1].n1,
-        segunda_nota_segundo_bimestre: dados.bimestres[1].n2,
-        terceira_nota_segundo_bimestre: dados.bimestres[1].n3,
-        quarta_nota_segundo_bimestre: dados.bimestres[1].n4,
-        faltas_segundo_bimestre: dados.bimestres[1].faltas
+        bimestres: this.fb.array([{
+          n1: dados.bimestres[1].n1,
+          n2: dados.bimestres[1].n2,
+          n3: dados.bimestres[1].n3,
+          n4: dados.bimestres[1].n4,
+          faltas: dados.bimestres[1].faltas
+        }]),
       });
     });
   }
 
   salvarDadosFormulario() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.api.getAlunoById(id).subscribe(dados => {
-      var obj = {
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
-        bimestres: [{
-          id: dados.bimestres[1].id,
-          primeira_nota_segundo_bimestre: dados.bimestres[1].n1,
-          segunda_nota_segundo_bimestre: dados.bimestres[1].n2,
-          terceira_nota_segundo_bimestre: dados.bimestres[1].n3,
-          quarta_nota_segundo_bimestre: dados.bimestres[1].n4,
-          faltas_segundo_bimestre: dados.bimestres[1].faltas
-        }]
-      };
 
-      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-          console.log(dados);
-      });
+    this.api.atualizaBimestre(id, this.params).subscribe(dados =>{
+        console.log(dados);
     });
   }
 

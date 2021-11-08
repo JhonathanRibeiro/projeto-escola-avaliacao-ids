@@ -53,6 +53,31 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     });
   }
 
+  salvarDadosFormulario() {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.api.getAlunoById(id).subscribe(dados => {
+      var obj = {
+        id: dados.id,
+        nome: dados.nome,
+        matricula: dados.matricula,
+        status: dados.status,
+        situacao: dados.situacao,
+        bimestres: [{
+          id: dados.bimestres[0].id,
+          n1: dados.bimestres[0].n1,
+          n2: dados.bimestres[0].n2,
+          n3: dados.bimestres[0].n3,
+          n4: dados.bimestres[0].n4,
+          faltas: dados.bimestres[0].faltas
+        }]
+      };
+
+      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
+          console.log(dados);
+      });
+    });
+  }
+
   get primeira_nota_primeiro_bimestre() {
     return this.formPrimeiroBimestre.get('primeira_nota_primeiro_bimestre');
   }
@@ -71,29 +96,5 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   get quarta_nota_primeiro_bimestre() {
     return this.formPrimeiroBimestre.get('quarta_nota_primeiro_bimestre');
-  }
-
-  salvarDadosFormulario() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.api.getAlunoById(id).subscribe(dados => {
-      var obj = {
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
-        bimestres: [{
-          id: dados.bimestres[0].id,
-          primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
-          segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
-          terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
-          quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-          faltas_primeiro_bimestre: dados.bimestres[0].faltas
-        }]
-      };
-
-      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-          console.log(dados);
-      });
-    });
   }
 }

@@ -130,12 +130,7 @@
       "situacao": "",
       "bimestres": [
         {
-          "id": 1,
-          "primeira_nota_primeiro_bimestre": 3.8,
-          "segunda_nota_primeiro_bimestre": 2.5,
-          "terceira_nota_primeiro_bimestre": 6.8,
-          "quarta_nota_primeiro_bimestre": 4.5,
-          "faltas_primeiro_bimestre": 2
+          "id": 2
         }
       ],
       "id": 4

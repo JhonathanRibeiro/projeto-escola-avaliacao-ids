@@ -75,21 +75,25 @@ export class DiarioEscolarComponent implements OnInit {
   }
 
   public calculoMediaPonderada(nota: any) {
-    if(nota.id == 1){
-      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
-      this.mediaprimeirobimestre = total / this.somaPesos
-    }
-    if(nota.id == 2) {
-      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
-      this.mediasegundobimestre = total / this.somaPesos
-    }
-    if(nota.id == 3) {
-      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
-      this.mediaterceirobimestre = total / this.somaPesos
-    }
-    if(nota.id == 4) {
-      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
-      this.mediaquartobimestre = total / this.somaPesos
+    switch (nota.id) {
+      case 1:
+        let mediaPrimeiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        this.mediaprimeirobimestre = mediaPrimeiroBimestre / this.somaPesos
+        break;
+      case 2:
+        let mediaSegundoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        this.mediasegundobimestre = mediaSegundoBimestre / this.somaPesos
+        break;
+      case 3:
+        let mediaTerceiroBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+      this.mediaterceirobimestre = mediaTerceiroBimestre / this.somaPesos
+        break;
+      case 4:
+        let mediaQuartoBimestre = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+        this.mediaquartobimestre = mediaQuartoBimestre / this.somaPesos
+        break;
+      default:
+        break;
     }
 
     let somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;

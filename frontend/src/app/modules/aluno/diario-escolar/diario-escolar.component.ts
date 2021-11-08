@@ -25,6 +25,18 @@ export class DiarioEscolarComponent implements OnInit {
   presenca: number = 0;
   situacao: string = '';
 
+  somaPesos: number = 10;
+  somaBimestres: number = 4;
+
+  pesoParticipacao: number = 1.5;
+  pesoEntrega: number = 2.5;
+  pesoTrabalho: number = 3;
+  pesoProva: number = 3;
+  totalDiasLetivos: number = 160;
+  minimoPresenca: number = 75;
+  mediaRecuperacao: number = 5;
+  mediaAprovado: number = 6;
+  
   constructor(
     private api: AlunoService,
     private route: ActivatedRoute
@@ -47,11 +59,11 @@ export class DiarioEscolarComponent implements OnInit {
         this.totalfaltas = this.totalfaltas + parseInt(res.faltas)
         this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
 
-        if(this.presenca < 75) {
+        if(this.presenca < this.minimoPresenca) {
           this.situacao = 'Reprovado por falta'
-        }else if (this.mediafinal < 5) {
+        }else if (this.mediafinal < this.mediaRecuperacao) {
           this.situacao = 'Reprovado';
-        } else if (this.mediafinal >= 5 && this.mediafinal < 6) {
+        } else if (this.mediafinal >= this.mediaRecuperacao && this.mediafinal < this.mediaAprovado) {
           this.situacao = 'Recuperação';
         } else {
           this.situacao = 'Aprovado';
@@ -64,29 +76,29 @@ export class DiarioEscolarComponent implements OnInit {
 
   public calculoMediaPonderada(nota: any) {
     if(nota.id == 1){
-      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
-      this.mediaprimeirobimestre = total / 10
+      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+      this.mediaprimeirobimestre = total / this.somaPesos
     }
     if(nota.id == 2) {
-      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
-      this.mediasegundobimestre = total / 10
+      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+      this.mediasegundobimestre = total / this.somaPesos
     }
     if(nota.id == 3) {
-      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
-      this.mediaterceirobimestre = total / 10
+      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+      this.mediaterceirobimestre = total / this.somaPesos
     }
     if(nota.id == 4) {
-      let total = (nota.n1 * 1.5) + (nota.n2 * 2.5) + (nota.n3 * 3) + (nota.n4 * 3);
-      this.mediaquartobimestre = total / 10
+      let total = (nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva);
+      this.mediaquartobimestre = total / this.somaPesos
     }
 
     let somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
-    this.mediafinal = somaMediaBimestres / 4
+    this.mediafinal = somaMediaBimestres / this.somaBimestres
   }
 
   public calculoFrequencia(freq: any) {
     let faltas = freq;
-    let dias = 160;
+    let dias = this.totalDiasLetivos;
 
     let diff = dias - faltas;
     let res = diff / dias;

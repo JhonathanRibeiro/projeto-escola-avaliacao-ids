@@ -1,12 +1,13 @@
 import { AlunoService } from './../aluno.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
   selector: 'app-lancarnotas',
   templateUrl: './lancarnotas.component.html',
-  styleUrls: ['./lancarnotas.component.css']
+  styleUrls: ['./lancarnotas.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LancarnotasComponent implements OnInit {
   bimestres: SelectItem[];

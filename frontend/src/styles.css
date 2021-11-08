@@ -46,6 +46,9 @@ body {
     width: 100%;
 }
 
+table.styled-table.w-100 {
+    box-shadow: 1px 5px 6px 0px #dddd;
+}
 .bg-blue {
     background: #3f51b5;
     color: #f1f1f1;
@@ -72,7 +75,7 @@ body {
     color: #fff;
 }
 
-.styled-table {
+:Host ::ng-deep .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -81,7 +84,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.titulo-atividade {
+:Host ::ng-deep .titulo-atividade {
     font-weight: 600;
     font-size: 14px;
 }

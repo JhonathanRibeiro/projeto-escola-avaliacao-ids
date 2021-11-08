@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
+import { Aluno } from 'src/app/models/aluno.model';
 
 @Component({
   selector: 'app-form-primeiro-bimestre',
@@ -11,7 +12,7 @@ import { AlunoService } from '../../aluno.service';
 
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
-  aluno: any;
+  aluno: Aluno;
   data: any;
 
   constructor(
@@ -29,6 +30,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.api.getAlunoById(id).subscribe(dados => {
+      this.aluno = dados
       this.formPrimeiroBimestre = this.fb.group({
         nome: dados.nome,
         matricula: dados.matricula,

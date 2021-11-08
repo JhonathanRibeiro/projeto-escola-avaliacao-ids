@@ -21,7 +21,7 @@
             <th class="titulo-atividade">Participação em sala de aula</th>
             <td>1.5</td>
             <td>
-                <input type="text" formControlName="primeira_nota_primeiro_bimestre">
+                <input type="text" formControlName="primeira_nota_primeiro_bimestre" autofocus>
                 <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
                     <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>

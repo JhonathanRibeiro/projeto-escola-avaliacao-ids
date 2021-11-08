@@ -1,0 +1,9 @@
+td {
+    padding: 3px;
+}
+thead {
+    font-size: 1.1em;
+  }
+ input {
+     outline: none;
+ }

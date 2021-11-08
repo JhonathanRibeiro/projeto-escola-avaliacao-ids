@@ -36,7 +36,7 @@ export class DiarioEscolarComponent implements OnInit {
   minimoPresenca: number = 75;
   mediaRecuperacao: number = 5;
   mediaAprovado: number = 6;
-  
+
   constructor(
     private api: AlunoService,
     private route: ActivatedRoute

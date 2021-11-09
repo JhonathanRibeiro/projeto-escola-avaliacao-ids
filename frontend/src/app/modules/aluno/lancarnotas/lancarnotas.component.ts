@@ -15,6 +15,11 @@ export class LancarnotasComponent implements OnInit {
   bimestre: any;
   bimestreId: any = 1;
   aluno: Aluno;
+
+  pesoParticipacaoEmSalaDeAula: number = 1.5;
+  pesoEntregaDasTarefas: number = 2.5;
+  pesoTrabalhoBimestral: number = 3;
+  pesoProvaBimestral: number = 3;
   
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +37,7 @@ export class LancarnotasComponent implements OnInit {
     this.getAlunoById();
   }
 
-  getBimestre() { // Função que foi chamada
+  getBimestre() {
     this.bimestreId = +this.bimestreId;
   }
 

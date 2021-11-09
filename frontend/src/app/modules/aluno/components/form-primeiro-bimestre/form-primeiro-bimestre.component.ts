@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
@@ -11,6 +11,10 @@ import { AlunoService } from '../../aluno.service';
 
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
+  pesoParticipacaoEmSalaDeAula:number = 1.5;
+  pesoEntregaDasTarefas:number = 2.5;
+  pesoTrabalhoBimestral:number = 3;
+  pesoProvaBimestral:number = 3;
 
   constructor(
     private fb: FormBuilder,
@@ -42,10 +46,11 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   formularioPrimeiroBimestre() {
     this.formPrimeiroBimestre = this.fb.group({
-      primeira_nota_primeiro_bimestre: ['', Validators.compose([
+      primeira_nota_primeiro_bimestre: [
+        '', 
         Validators.required,
         Validators.maxLength(2)
-      ])],
+      ],
       segunda_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       terceira_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       quarta_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],

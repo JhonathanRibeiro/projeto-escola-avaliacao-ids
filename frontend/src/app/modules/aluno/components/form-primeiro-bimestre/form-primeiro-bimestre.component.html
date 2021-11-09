@@ -1,22 +1,4 @@
-<table class="styled-table w-100">
-    <tr class="identificador-content">
-        <td>
-            <span class="identificador-nome">Aluno:</span>
-            <span> {{aluno.nome | uppercase}}</span>
-        </td>
-        <td>
-            <span class="identificador-nome">Matrícula:</span>
-            <span> {{aluno.matricula}}</span>
-        </td>
-        <td>
-            <span class="identificador-nome">Status:</span>
-            <span> {{aluno.status | uppercase}}</span>
-        </td>
-    </tr>
-</table>
-
 <form [formGroup]="formPrimeiroBimestre" (ngSubmit)="salvarDadosFormulario()">
-
 <table class="styled-table">
     <thead>
         <tr>
@@ -38,14 +20,15 @@
             <th class="titulo-atividade">Participação em sala de aula</th>
             <td>1.5</td>
             <td>
-                <input type="text" formControlName="primeira_nota_primeiro_bimestre" autofocus>
+                <input type="text" formControlName="primeira_nota_primeiro_bimestre">
                 <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
                     <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    <p *ngIf="primeira_nota_primeiro_bimestre.errors.maxLength">Máximo de 3 caracteres</p>
                 </div>
             </td>
 
             <td>
-                <input type="text" formControlName="faltas_primeiro_bimestre">
+                <input type="number" formControlName="faltas_primeiro_bimestre">
                 <div *ngIf="!faltas_primeiro_bimestre.pristine && faltas_primeiro_bimestre.errors">
                     <p *ngIf="faltas_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -56,7 +39,7 @@
             <th class="titulo-atividade">Entrega das tarefas</th>
             <td>2.5</td>
             <td>
-                <input type="text" formControlName="segunda_nota_primeiro_bimestre">
+                <input type="number" formControlName="segunda_nota_primeiro_bimestre">
                 <div *ngIf="!segunda_nota_primeiro_bimestre.pristine && segunda_nota_primeiro_bimestre.errors">
                     <p *ngIf="segunda_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -67,7 +50,7 @@
             <th class="titulo-atividade">Trabalho Bimestral</th>
             <td>3.0</td>
             <td>
-                <input type="text" formControlName="terceira_nota_primeiro_bimestre">
+                <input type="number" formControlName="terceira_nota_primeiro_bimestre">
                 <div *ngIf="!terceira_nota_primeiro_bimestre.pristine && terceira_nota_primeiro_bimestre.errors">
                     <p *ngIf="terceira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -78,7 +61,7 @@
             <th class="titulo-atividade">Prova Bimestral</th>
             <td>3.0</td>
             <td>
-                <input type="text" formControlName="quarta_nota_primeiro_bimestre">
+                <input type="number" formControlName="quarta_nota_primeiro_bimestre">
                 <div *ngIf="!quarta_nota_primeiro_bimestre.pristine && quarta_nota_primeiro_bimestre.errors">
                     <p *ngIf="quarta_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>

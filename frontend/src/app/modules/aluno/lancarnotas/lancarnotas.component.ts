@@ -2,6 +2,7 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/components/common/selectitem';
+import { Aluno } from 'src/app/models/aluno.model';
 
 @Component({
   selector: 'app-lancarnotas',
@@ -13,7 +14,7 @@ export class LancarnotasComponent implements OnInit {
   bimestres: SelectItem[];
   bimestre: any;
   bimestreId: any = 1;
-  alunos: Array<any>;
+  aluno: Aluno;
   
   constructor(
     private route: ActivatedRoute,
@@ -35,14 +36,10 @@ export class LancarnotasComponent implements OnInit {
     this.bimestreId = +this.bimestreId;
   }
 
-  salvarDadosFormulario() {
-    alert('teste');
-  }
-
   getAlunoById() {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(aluno => {
-      this.alunos = Array(aluno);
+      this.aluno = aluno;
     });
   }
 }

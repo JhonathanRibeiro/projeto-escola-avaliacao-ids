@@ -27,7 +27,7 @@ export class AlunoService {
   }
 
   public atualizaBimestre(id: number, obj: any): Observable<any> {
-    return this.http.put<Aluno>(`${this.apiURL}/alunos/${id}`, obj);
+    return this.http.patch<Aluno>(`${this.apiURL}/alunos/${id}`, obj);
   }
 
 }

@@ -1,81 +1,76 @@
 <form [formGroup]="formSegundoBimestre" (ngSubmit)="salvarDadosFormulario()">
-
     <table class="styled-table">
-        <thead>
-            <tr>
-                <td ROWSPAN=2 class="text-center">
-                    <b>Disciplina</b>
+    <thead>
+        <tr>
+            <td ROWSPAN=2 class="text-center">
+                <b>Disciplina</b>
+            </td>
+            <td ROWSPAN=2 class="text-center">
+                <b>Peso</b>
+            </td>
+            <th colspan="2">2º Bimestre</th>
+        </tr>
+        <tr>
+            <th>Nota</th>
+            <th>Falta</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        <tr>
+            <th class="titulo-atividade">Participação em sala de aula</th>
+            <td>1.5</td>
+                <td>
+                    <input type="number" formControlName="primeira_nota_segundo_bimestre">
+                    <div *ngIf="!primeira_nota_segundo_bimestre.pristine && primeira_nota_segundo_bimestre.errors">
+                        <p *ngIf="primeira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
                 </td>
-                <td ROWSPAN=2 class="text-center">
-                    <b>Peso</b>
-                </td>
-                <th colspan="2">2º Bimestre</th>
-            </tr>
-            <tr>
-                <th>Nota</th>
-                <th>Falta</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            <tr>
-                <th class="titulo-atividade">Participação em sala de aula</th>
-                <td>1.5</td>
-                <div formArrayName="bimestres" *ngFor="let nota of formSegundoBimestre.get('bimestres').controls; let i = index;">
-                    <td>
-                        <div [formGroupName]="i">
-                            <input type="text" formControlName="n1">
-                            <div *ngIf="!n1.pristine && n1.errors">
-                                <p *ngIf="n1.errors.required">Preenchimento obrigatório</p>
-                            </div>
-                        </div>
-                    </td>
+
+            <td>
+                <input type="number" formControlName="faltas_segundo_bimestre">
+                <div *ngIf="!faltas_segundo_bimestre.pristine && faltas_segundo_bimestre.errors">
+                    <p *ngIf="faltas_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
-    
-                <td>
-                    <input type="text" formControlName="faltas_segundo_bimestre">
-                    <div *ngIf="!faltas_segundo_bimestre.pristine && faltas_segundo_bimestre.errors">
-                        <p *ngIf="faltas_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
-                    </div>
-                </td>
-            </tr>
-           
-            <tr>
-                <th class="titulo-atividade">Entrega das tarefas</th>
-                <td>2.5</td>
-                <td>
-                    <input type="text" formControlName="segunda_nota_segundo_bimestre">
-                    <div *ngIf="!segunda_nota_segundo_bimestre.pristine && segunda_nota_segundo_bimestre.errors">
-                        <p *ngIf="segunda_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
-                    </div>
-                </td>
-            </tr>
-    
-            <tr>
-                <th class="titulo-atividade">Trabalho Bimestral</th>
-                <td>3.0</td>
-                <td>
-                    <input type="text" formControlName="terceira_nota_segundo_bimestre">
-                    <div *ngIf="!terceira_nota_segundo_bimestre.pristine && terceira_nota_segundo_bimestre.errors">
-                        <p *ngIf="terceira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
-                    </div>
-                </td>
-            </tr>
-    
-            <tr>
-                <th class="titulo-atividade">Prova Bimestral</th>
-                <td>3.0</td>
-                <td>
-                    <input type="text" formControlName="quarta_nota_segundo_bimestre">
-                    <div *ngIf="!quarta_nota_segundo_bimestre.pristine && quarta_nota_segundo_bimestre.errors">
-                        <p *ngIf="quarta_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="">
-        <button pButton label="Salvar"></button>&nbsp;
-        <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
-    </div>
-    </form>
+            </td>
+        </tr>
+        
+        <tr>
+            <th class="titulo-atividade">Entrega das tarefas</th>
+            <td>2.5</td>
+            <td>
+                <input type="number" formControlName="segunda_nota_segundo_bimestre">
+                <div *ngIf="!segunda_nota_segundo_bimestre.pristine && segunda_nota_segundo_bimestre.errors">
+                    <p *ngIf="segunda_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="titulo-atividade">Trabalho Bimestral</th>
+            <td>3.0</td>
+            <td>
+                <input type="number" formControlName="terceira_nota_segundo_bimestre">
+                <div *ngIf="!terceira_nota_segundo_bimestre.pristine && terceira_nota_segundo_bimestre.errors">
+                    <p *ngIf="terceira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="titulo-atividade">Prova Bimestral</th>
+            <td>3.0</td>
+            <td>
+                <input type="number" formControlName="quarta_nota_segundo_bimestre">
+                <div *ngIf="!quarta_nota_segundo_bimestre.pristine && quarta_nota_segundo_bimestre.errors">
+                    <p *ngIf="quarta_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="">
+    <button pButton label="Salvar"></button>&nbsp;
+    <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
+</div>
+</form>

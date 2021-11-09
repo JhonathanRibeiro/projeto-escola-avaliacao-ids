@@ -84,11 +84,6 @@ table.styled-table.w-100 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-:Host ::ng-deep .titulo-atividade {
-    font-weight: 600;
-    font-size: 14px;
-}
-
 .bg-muted {
     background-color: #cccc;
 }
@@ -173,20 +168,4 @@ thead tr {
     background-color: #2b58a0e6;
     color: #ffffff;
     text-align: center;
-}
-
-
-:host ::ng-deep button {
-    margin-right: .25em;
-}
-
-:host ::ng-deep .custom-toast .ui-toast-message {
-    color: #ffffff;
-    background: #FC466B;
-    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
-    background: linear-gradient(to right, #3F5EFB, #FC466B);
-}
-
-:host ::ng-deep .custom-toast .ui-toast-close-icon {
-    color: #ffffff;
 }

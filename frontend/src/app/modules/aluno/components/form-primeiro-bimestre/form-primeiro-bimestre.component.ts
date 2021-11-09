@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
-import { Aluno } from 'src/app/models/aluno.model';
 
 @Component({
   selector: 'app-form-primeiro-bimestre',
@@ -12,8 +11,6 @@ import { Aluno } from 'src/app/models/aluno.model';
 
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
-  aluno: Aluno;
-  data: any;
 
   constructor(
     private fb: FormBuilder,
@@ -28,9 +25,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   populaDadosFormulario() {
     const id = this.route.snapshot.paramMap.get('id');
-
     this.api.getAlunoById(id).subscribe(dados => {
-      this.aluno = dados
       this.formPrimeiroBimestre = this.fb.group({
         nome: dados.nome,
         matricula: dados.matricula,
@@ -47,7 +42,10 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   formularioPrimeiroBimestre() {
     this.formPrimeiroBimestre = this.fb.group({
-      primeira_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
+      primeira_nota_primeiro_bimestre: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(2)
+      ])],
       segunda_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       terceira_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       quarta_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
@@ -64,19 +62,41 @@ export class FormPrimeiroBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        bimestres: [{
-          id: dados.bimestres[0].id,
-          n1: dados.bimestres[0].n1,
-          n2: dados.bimestres[0].n2,
-          n3: dados.bimestres[0].n3,
-          n4: dados.bimestres[0].n4,
-          faltas: dados.bimestres[0].faltas
-        }]
+        bimestres: [
+          {
+            id: dados.bimestres[0].id,
+            n1: this.formPrimeiroBimestre.value.primeira_nota_primeiro_bimestre,
+            n2: this.formPrimeiroBimestre.value.segunda_nota_primeiro_bimestre,
+            n3: this.formPrimeiroBimestre.value.terceira_nota_primeiro_bimestre,
+            n4: this.formPrimeiroBimestre.value.quarta_nota_primeiro_bimestre,
+            faltas: this.formPrimeiroBimestre.value.faltas_primeiro_bimestre
+          },
+          {
+            id: dados.bimestres[1].id,
+            n1: dados.bimestres[1].n1,
+            n2: dados.bimestres[1].n2,
+            n3: dados.bimestres[1].n3,
+            n4: dados.bimestres[1].n4,
+            faltas: dados.bimestres[1].faltas
+          },
+          {
+            id: dados.bimestres[2].id,
+            n1: dados.bimestres[2].n1,
+            n2: dados.bimestres[2].n2,
+            n3: dados.bimestres[2].n3,
+            n4: dados.bimestres[2].n4,
+            faltas: dados.bimestres[2].faltas
+          },
+          {
+            id: dados.bimestres[3].id,
+            n1: dados.bimestres[3].n1,
+            n2: dados.bimestres[3].n2,
+            n3: dados.bimestres[3].n3,
+            n4: dados.bimestres[3].n4,
+            faltas: dados.bimestres[3].faltas
+          }]
       };
-
-      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-          console.log(dados);
-      });
+      this.api.atualizaBimestre(id, obj).subscribe(dados =>{console.log(dados);});
     });
   }
 

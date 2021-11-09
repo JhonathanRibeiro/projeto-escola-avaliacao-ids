@@ -29,7 +29,8 @@
                     <th colspan="1">2º Bimestre</th>
                     <th colspan="1">3º Bimestre</th>
                     <th colspan="1">4º Bimestre</th>
-                    <th rowspan="4">Média Final</th>
+                    <th rowspan="2">Faltas</th>
+                    <th rowspan="2">Média Final</th>
                 </tr>
                 <tr class="bg-blue">
                     <th>Nota</th>
@@ -45,6 +46,7 @@
                     <td *ngFor="let sb of segundobimestre">{{sb.n1}}</td>
                     <td *ngFor="let tb of terceirobimestre">{{tb.n1}}</td>
                     <td *ngFor="let qb of quartobimestre">{{qb.n1}}</td>
+                    <td class="faltas">{{faltasPrimeiroBimestre}}</td>
                 </tr>
                 <tr>
                     <td>Entrega das tarefas</td>
@@ -52,6 +54,7 @@
                     <td *ngFor="let sb of segundobimestre">{{sb.n2}}</td>
                     <td *ngFor="let tb of terceirobimestre">{{tb.n2}}</td>
                     <td *ngFor="let qb of quartobimestre">{{qb.n2}}</td>
+                    <td class="faltas">{{faltasSegundoBimestre}}</td>
                 </tr>
                 <tr>
                     <td>Trabalho Bimestral</td>
@@ -59,6 +62,7 @@
                     <td *ngFor="let sb of segundobimestre">{{sb.n3}}</td>
                     <td *ngFor="let tb of terceirobimestre">{{tb.n3}}</td>
                     <td *ngFor="let qb of quartobimestre">{{qb.n3}}</td>
+                    <td class="faltas">{{faltasTerceiroBimestre}}</td>
                 </tr>
                 <tr>
                     <td>Prova Bimestral</td>
@@ -66,13 +70,15 @@
                     <td *ngFor="let sb of segundobimestre">{{sb.n4}}</td>
                     <td *ngFor="let tb of terceirobimestre">{{tb.n4}}</td>
                     <td *ngFor="let qb of quartobimestre">{{qb.n4}}</td>
+                    <td class="faltas">{{faltasQuartoBimestre}}</td>
                 </tr>
                 <tr>
-                    <td class="titulo-atividade">Média bimestral</td>
+                    <td class="titulo-atividade"><b>Média bimestral</b></td>
                     <td><strong>{{mediaprimeirobimestre | number: '1.2-2'}}</strong></td>
                     <td><strong>{{mediasegundobimestre | number: '1.2-2'}}</strong></td>
                     <td><strong>{{mediaterceirobimestre | number: '1.2-2'}}</strong></td>
                     <td><strong>{{mediaquartobimestre | number: '1.2-2'}}</strong></td>
+                    <td class="faltas"></td>
                     <td class="bg-muted"><span>{{mediafinal | number: '1.2-2'}}</span></td>
                 </tr>
             </tbody>

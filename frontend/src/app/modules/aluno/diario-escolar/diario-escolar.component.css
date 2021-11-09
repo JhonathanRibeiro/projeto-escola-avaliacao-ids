@@ -52,3 +52,8 @@ input[type=button] {
 .boletim {
     box-shadow: 0px 3px 6px rgb(93 91 91 / 82%);
 }
+
+.faltas {
+    background: #ffebe4;
+    color: #ff4a4a;
+}

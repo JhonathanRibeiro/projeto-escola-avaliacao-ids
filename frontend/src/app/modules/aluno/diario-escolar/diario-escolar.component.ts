@@ -15,6 +15,11 @@ export class DiarioEscolarComponent implements OnInit {
   terceirobimestre: Aluno[];
   quartobimestre: Aluno[];
 
+  faltasPrimeiroBimestre: number;
+  faltasSegundoBimestre: number;
+  faltasTerceiroBimestre: number;
+  faltasQuartoBimestre: number;
+
   mediaprimeirobimestre: number;
   mediasegundobimestre: number;
   mediaterceirobimestre: number;
@@ -51,6 +56,11 @@ export class DiarioEscolarComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(alunos => {
       this.aluno = Array(alunos)
+
+      this.faltasPrimeiroBimestre = alunos.bimestres[0].faltas
+      this.faltasSegundoBimestre = alunos.bimestres[1].faltas
+      this.faltasTerceiroBimestre = alunos.bimestres[2].faltas
+      this.faltasQuartoBimestre = alunos.bimestres[3].faltas
 
       alunos.bimestres.filter((res: any) => {
         const result = Array(res);

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
@@ -6,10 +6,8 @@ import { paramsPrimeiroBimestre } from '../../helpers/params';
 
 @Component({
   selector: 'app-form-primeiro-bimestre',
-  templateUrl: './form-primeiro-bimestre.component.html',
-  styleUrls: ['./form-primeiro-bimestre.component.css']
+  templateUrl: './form-primeiro-bimestre.component.html'
 })
-
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
  
@@ -32,22 +30,22 @@ export class FormPrimeiroBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_primeiro_bimestre: dados.bimestres[0].n1,
-        segunda_nota_primeiro_bimestre: dados.bimestres[0].n2,
-        terceira_nota_primeiro_bimestre: dados.bimestres[0].n3,
-        quarta_nota_primeiro_bimestre: dados.bimestres[0].n4,
-        faltas_primeiro_bimestre: dados.bimestres[0].faltas
+        primeira_nota_primeiro_bimestre: [dados.bimestres[0].n1, Validators.required],
+        segunda_nota_primeiro_bimestre: [dados.bimestres[0].n2,Validators.required],
+        terceira_nota_primeiro_bimestre: [dados.bimestres[0].n3,Validators.required],
+        quarta_nota_primeiro_bimestre: [dados.bimestres[0].n4,Validators.required],
+        faltas_primeiro_bimestre: [dados.bimestres[0].faltas, Validators.required]
       });
     });
   }
 
   formularioPrimeiroBimestre() {
     this.formPrimeiroBimestre = this.fb.group({
-      primeira_nota_primeiro_bimestre: ['',Validators.required,],
-      segunda_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
-      terceira_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
-      quarta_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
-      faltas_primeiro_bimestre: ['', Validators.compose([Validators.required])]
+      primeira_nota_primeiro_bimestre: [''],
+      segunda_nota_primeiro_bimestre: [''],
+      terceira_nota_primeiro_bimestre: [''],
+      quarta_nota_primeiro_bimestre: [''],
+      faltas_primeiro_bimestre: ['']
     });
   }
 
@@ -56,7 +54,6 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     this.api.getAlunoById(id).subscribe(dados => {
       try {
         const params = paramsPrimeiroBimestre(dados, this.formPrimeiroBimestre);
-        console.log(params)
         this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados);});
       } catch (error) {
         console.log(`Não foi possível atualizar as notas. Error: ${error}`);

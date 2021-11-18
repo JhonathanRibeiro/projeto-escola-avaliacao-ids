@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
+import { paramsPrimeiroBimestre } from '../../helpers/params';
 
 @Component({
   selector: 'app-form-primeiro-bimestre',
@@ -11,11 +12,7 @@ import { AlunoService } from '../../aluno.service';
 
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
-  pesoParticipacaoEmSalaDeAula:number = 1.5;
-  pesoEntregaDasTarefas:number = 2.5;
-  pesoTrabalhoBimestral:number = 3;
-  pesoProvaBimestral:number = 3;
-
+ 
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
@@ -46,11 +43,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
 
   formularioPrimeiroBimestre() {
     this.formPrimeiroBimestre = this.fb.group({
-      primeira_nota_primeiro_bimestre: [
-        '', 
-        Validators.required,
-        Validators.maxLength(2)
-      ],
+      primeira_nota_primeiro_bimestre: ['',Validators.required,],
       segunda_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       terceira_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
       quarta_nota_primeiro_bimestre: ['', Validators.compose([Validators.required])],
@@ -61,47 +54,13 @@ export class FormPrimeiroBimestreComponent implements OnInit {
   salvarDadosFormulario() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
-      var obj = {
-        id: dados.id,
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
-        bimestres: [
-          {
-            id: dados.bimestres[0].id,
-            n1: this.formPrimeiroBimestre.value.primeira_nota_primeiro_bimestre,
-            n2: this.formPrimeiroBimestre.value.segunda_nota_primeiro_bimestre,
-            n3: this.formPrimeiroBimestre.value.terceira_nota_primeiro_bimestre,
-            n4: this.formPrimeiroBimestre.value.quarta_nota_primeiro_bimestre,
-            faltas: this.formPrimeiroBimestre.value.faltas_primeiro_bimestre
-          },
-          {
-            id: dados.bimestres[1].id,
-            n1: dados.bimestres[1].n1,
-            n2: dados.bimestres[1].n2,
-            n3: dados.bimestres[1].n3,
-            n4: dados.bimestres[1].n4,
-            faltas: dados.bimestres[1].faltas
-          },
-          {
-            id: dados.bimestres[2].id,
-            n1: dados.bimestres[2].n1,
-            n2: dados.bimestres[2].n2,
-            n3: dados.bimestres[2].n3,
-            n4: dados.bimestres[2].n4,
-            faltas: dados.bimestres[2].faltas
-          },
-          {
-            id: dados.bimestres[3].id,
-            n1: dados.bimestres[3].n1,
-            n2: dados.bimestres[3].n2,
-            n3: dados.bimestres[3].n3,
-            n4: dados.bimestres[3].n4,
-            faltas: dados.bimestres[3].faltas
-          }]
-      };
-      this.api.atualizaBimestre(id, obj).subscribe(dados =>{console.log(dados);});
+      try {
+        const params = paramsPrimeiroBimestre(dados, this.formPrimeiroBimestre);
+        console.log(params)
+        this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados);});
+      } catch (error) {
+        console.log(`Não foi possível atualizar as notas. Error: ${error}`);
+      }
     });
   }
 

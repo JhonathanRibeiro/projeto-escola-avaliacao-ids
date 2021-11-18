@@ -18,9 +18,9 @@
     <tbody class="text-center">
         <tr>
             <th class="titulo-atividade">Participação em sala de aula</th>
-            <td>{{pesoParticipacaoEmSalaDeAula}}</td>
+            <td>1.5</td>
             <td>
-                <input type="number" formControlName="primeira_nota_primeiro_bimestre">
+                <input type="text" formControlName="primeira_nota_primeiro_bimestre">
                 <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
                     <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -36,7 +36,7 @@
        
         <tr>
             <th class="titulo-atividade">Entrega das tarefas</th>
-            <td>{{pesoEntregaDasTarefas}}</td>
+            <td>2.5</td>
             <td>
                 <input type="number" formControlName="segunda_nota_primeiro_bimestre">
                 <div *ngIf="!segunda_nota_primeiro_bimestre.pristine && segunda_nota_primeiro_bimestre.errors">
@@ -47,7 +47,7 @@
 
         <tr>
             <th class="titulo-atividade">Trabalho Bimestral</th>
-            <td>{{pesoTrabalhoBimestral}}</td>
+            <td>3.0</td>
             <td>
                 <input type="number" formControlName="terceira_nota_primeiro_bimestre">
                 <div *ngIf="!terceira_nota_primeiro_bimestre.pristine && terceira_nota_primeiro_bimestre.errors">
@@ -58,7 +58,7 @@
 
         <tr>
             <th class="titulo-atividade">Prova Bimestral</th>
-            <td>{{pesoProvaBimestral}}</td>
+            <td>3.0</td>
             <td>
                 <input type="number" formControlName="quarta_nota_primeiro_bimestre">
                 <div *ngIf="!quarta_nota_primeiro_bimestre.pristine && quarta_nota_primeiro_bimestre.errors">

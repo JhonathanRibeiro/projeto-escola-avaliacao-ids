@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlunoService } from '../../aluno.service';
+import { paramsQuartoBimestre } from '../../helpers/params';
 
 @Component({
   selector: 'app-form-quarto-bimestre',
@@ -52,50 +53,12 @@ export class FormQuartoBimestreComponent implements OnInit {
   salvarDadosFormulario() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
-      var obj = {
-        id: dados.id,
-        nome: dados.nome,
-        matricula: dados.matricula,
-        status: dados.status,
-        situacao: dados.situacao,
-        bimestres: [
-          {
-            id: dados.bimestres[0].id,
-            n1: dados.bimestres[0].n1,
-            n2: dados.bimestres[0].n2,
-            n3: dados.bimestres[0].n3,
-            n4: dados.bimestres[0].n4,
-            faltas: dados.bimestres[0].faltas
-          },
-          {
-            id: dados.bimestres[1].id,
-            n1: dados.bimestres[1].n1,
-            n2: dados.bimestres[1].n2,
-            n3: dados.bimestres[1].n3,
-            n4: dados.bimestres[1].n4,
-            faltas: dados.bimestres[1].faltas
-          },
-          {
-            id: dados.bimestres[2].id,
-            n1: dados.bimestres[2].n1,
-            n2: dados.bimestres[2].n2,
-            n3: dados.bimestres[2].n3,
-            n4: dados.bimestres[2].n4,
-            faltas: dados.bimestres[2].faltas
-          },
-          {
-            id: dados.bimestres[3].id,
-            n1: this.formQuartoBimestre.value.primeira_nota_quarto_bimestre,
-            n2: this.formQuartoBimestre.value.segunda_nota_quarto_bimestre,
-            n3: this.formQuartoBimestre.value.terceira_nota_quarto_bimestre,
-            n4: this.formQuartoBimestre.value.quarta_nota_quarto_bimestre,
-            faltas: this.formQuartoBimestre.value.faltas_quarto_bimestre
-          }
-       ]
-      };
-      this.api.atualizaBimestre(id, obj).subscribe(dados =>{
-          console.log(dados);
-      });
+      try {
+        const params = paramsQuartoBimestre(dados, this.formQuartoBimestre);
+        this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados);});
+       } catch (error) {
+         console.log(`Não foi possível atualizar as notas. Error: ${error}`);
+       }
     });
   }
 

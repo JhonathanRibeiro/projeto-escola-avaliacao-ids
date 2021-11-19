@@ -20,14 +20,24 @@
             <th class="titulo-atividade">Participação em sala de aula</th>
             <td>1.5</td>
                 <td>
-                    <input type="number" formControlName="primeira_nota_segundo_bimestre">
+                    <input 
+                    type="number"
+                    maxlength="3"
+                    formControlName="primeira_nota_segundo_bimestre" 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+
                     <div *ngIf="!primeira_nota_segundo_bimestre.pristine && primeira_nota_segundo_bimestre.errors">
                         <p *ngIf="primeira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
                     </div>
                 </td>
 
             <td>
-                <input type="number" formControlName="faltas_segundo_bimestre">
+                <input 
+                type="number" 
+                maxlength="2"
+                formControlName="faltas_segundo_bimestre"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 40) this.value = 40">
+
                 <div *ngIf="!faltas_segundo_bimestre.pristine && faltas_segundo_bimestre.errors">
                     <p *ngIf="faltas_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -38,7 +48,12 @@
             <th class="titulo-atividade">Entrega das tarefas</th>
             <td>2.5</td>
             <td>
-                <input type="number" formControlName="segunda_nota_segundo_bimestre">
+                <input 
+                type="number" 
+                maxlength="3"
+                formControlName="segunda_nota_segundo_bimestre" 
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+                
                 <div *ngIf="!segunda_nota_segundo_bimestre.pristine && segunda_nota_segundo_bimestre.errors">
                     <p *ngIf="segunda_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
@@ -49,10 +64,15 @@
             <th class="titulo-atividade">Trabalho Bimestral</th>
             <td>3.0</td>
             <td>
-                <input type="number" formControlName="terceira_nota_segundo_bimestre">
-                <div *ngIf="!terceira_nota_segundo_bimestre.pristine && terceira_nota_segundo_bimestre.errors">
-                    <p *ngIf="terceira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
-                </div>
+                <input 
+                type="number" 
+                maxlength="3"
+                formControlName="terceira_nota_segundo_bimestre" 
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+
+            <div *ngIf="!terceira_nota_segundo_bimestre.pristine && terceira_nota_segundo_bimestre.errors">
+                <p *ngIf="terceira_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+            </div>
             </td>
         </tr>
 
@@ -60,9 +80,14 @@
             <th class="titulo-atividade">Prova Bimestral</th>
             <td>3.0</td>
             <td>
-                <input type="number" formControlName="quarta_nota_segundo_bimestre">
+                <input 
+                type="number" 
+                maxlength="3"
+                formControlName="quarta_nota_segundo_bimestre" 
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+
                 <div *ngIf="!quarta_nota_segundo_bimestre.pristine && quarta_nota_segundo_bimestre.errors">
-                    <p *ngIf="quarta_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
+                 <p *ngIf="quarta_nota_segundo_bimestre.errors.required">Preenchimento obrigatório</p>
                 </div>
             </td>
         </tr>
@@ -70,7 +95,7 @@
 </table>
 
 <div class="">
-    <button pButton label="Salvar"></button>&nbsp;
+    <button pButton label="Salvar" [disabled]="formSegundoBimestre.invalid"></button>&nbsp;
     <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
 </div>
 </form>

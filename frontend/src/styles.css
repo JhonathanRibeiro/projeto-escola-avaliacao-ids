@@ -10,7 +10,7 @@ html {
 
 body {
     font-family: "Helvetica Neue", sans-serif;
-    background: #fafafa;
+    background: #f7f7f7;
 }
 
 .footer {
@@ -73,15 +73,6 @@ table.styled-table.w-100 {
     padding: 3px 12px;
     margin-left: -1px;
     color: #fff;
-}
-
-:Host ::ng-deep .styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .bg-muted {
@@ -147,6 +138,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number] {
+    margin: 3px;
+    padding: 1px 5px;
     -moz-appearance: textfield;
     appearance: textfield;
 }
@@ -156,6 +149,7 @@ input:focus {
 }
 
 select {
+    outline: none;
     padding: 7px 0.75em;
     font-size: 14px;
 }

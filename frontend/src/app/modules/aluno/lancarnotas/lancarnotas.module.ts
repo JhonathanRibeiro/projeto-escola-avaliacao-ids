@@ -6,7 +6,7 @@ import { LancarnotasComponent } from './lancarnotas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule} from 'primeng/button';
 import { FormPrimeiroBimestreComponent } from '../components/form-primeiro-bimestre/form-primeiro-bimestre.component';
 import { FormSegundoBimestreComponent } from '../components/form-segundo-bimestre/form-segundo-bimestre.component';
 import { FormTerceiroBimestreComponent } from '../components/form-terceiro-bimestre/form-terceiro-bimestre.component';

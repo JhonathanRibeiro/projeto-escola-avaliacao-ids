@@ -8,22 +8,7 @@
         </option>
     </select>
     
-    <table class="styled-table w-100">
-        <tr class="identificador-content">
-            <td>
-                <span class="identificador-nome">Aluno:</span>
-                <span> {{aluno.nome | uppercase}}</span>
-            </td>
-            <td>
-                <span class="identificador-nome">Matrícula:</span>
-                <span> {{aluno.matricula}}</span>
-            </td>
-            <td>
-                <span class="identificador-nome">Status:</span>
-                <span> {{aluno.status | uppercase}}</span>
-            </td>
-        </tr>
-    </table>
+      <app-identificador-aluno></app-identificador-aluno>
 
       <app-form-primeiro-bimestre *ngIf="bimestreId == 1"></app-form-primeiro-bimestre>
       <app-form-segundo-bimestre  *ngIf="bimestreId == 2"></app-form-segundo-bimestre>

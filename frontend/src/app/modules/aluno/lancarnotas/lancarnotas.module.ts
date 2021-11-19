@@ -12,6 +12,7 @@ import { FormSegundoBimestreComponent } from '../components/form-segundo-bimestr
 import { FormTerceiroBimestreComponent } from '../components/form-terceiro-bimestre/form-terceiro-bimestre.component';
 import { FormQuartoBimestreComponent } from '../components/form-quarto-bimestre/form-quarto-bimestre.component';
 import { TableHeadComponent } from '../components/table-head/table-head.component';
+import { IdentificadorAlunoComponent } from '../components/identificador-aluno/identificador-aluno.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TableHeadComponent } from '../components/table-head/table-head.componen
     FormSegundoBimestreComponent,
     FormTerceiroBimestreComponent,
     FormQuartoBimestreComponent,
+    IdentificadorAlunoComponent,
     TableHeadComponent
   ],
   imports: [

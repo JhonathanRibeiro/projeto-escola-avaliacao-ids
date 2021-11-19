@@ -1,8 +1,5 @@
-import { AlunoService } from './../aluno.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
-import { Aluno } from 'src/app/models/aluno.model';
 
 @Component({
   selector: 'app-lancarnotas',
@@ -10,21 +7,11 @@ import { Aluno } from 'src/app/models/aluno.model';
   styleUrls: ['./lancarnotas.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LancarnotasComponent implements OnInit {
+export class LancarnotasComponent {
   bimestres: SelectItem[];
-  bimestre: any;
   bimestreId: any = 1;
-  aluno: Aluno;
 
-  pesoParticipacaoEmSalaDeAula: number = 1.5;
-  pesoEntregaDasTarefas: number = 2.5;
-  pesoTrabalhoBimestral: number = 3;
-  pesoProvaBimestral: number = 3;
-  
-  constructor(
-    private route: ActivatedRoute,
-    private api: AlunoService
-  ) {
+  constructor() {
     this.bimestres = [
       { label: 'Primeiro bimestre', value: { id: 1, name: 'Primeiro Bimestre' } },
       { label: 'Segundo bimestre', value: { id: 2, name: 'Segundo Bimestre' } },
@@ -33,18 +20,7 @@ export class LancarnotasComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
-    this.getAlunoById();
-  }
-
   getBimestre() {
     this.bimestreId = +this.bimestreId;
-  }
-
-  getAlunoById() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.api.getAlunoById(id).subscribe(aluno => {
-      this.aluno = aluno;
-    });
   }
 }

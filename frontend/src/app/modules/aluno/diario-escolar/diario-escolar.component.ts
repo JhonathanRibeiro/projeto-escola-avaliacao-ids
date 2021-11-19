@@ -54,23 +54,23 @@ export class DiarioEscolarComponent implements OnInit {
   //Irá cruzar as informações obtidas para retornar a situação final do aluno
   public situacaoFinalAluno(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.api.getAlunoById(id).subscribe(alunos => {
-      this.aluno = Array(alunos);
-      this.faltasPorBimestre(alunos);
+    this.api.getAlunoById(id).subscribe(dados => {
+      this.aluno = Array(dados);
+      this.faltasPorBimestre(dados);
 
-      alunos.bimestres.filter((res: any) => {
-        this.calculoMediaPonderada(res);
-        this.notasBimestre(Array(res), res);
-        this.verificaSituacaoFinal(res);        
+      dados.bimestres.filter((notas: any) => {
+        this.calculoMediaPonderada(notas);
+        this.notasBimestre(Array(notas), notas);
+        this.verificaSituacaoFinal(notas);        
       });
     }, err => console.error(err));
   }
 
-  public faltasPorBimestre(alunos) {
-    this.faltasPrimeiroBimestre = alunos.bimestres[0].faltas
-    this.faltasSegundoBimestre  = alunos.bimestres[1].faltas
-    this.faltasTerceiroBimestre = alunos.bimestres[2].faltas
-    this.faltasQuartoBimestre   = alunos.bimestres[3].faltas
+  public faltasPorBimestre(dados) {
+    this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
+    this.faltasSegundoBimestre  = dados.bimestres[1].faltas
+    this.faltasTerceiroBimestre = dados.bimestres[2].faltas
+    this.faltasQuartoBimestre   = dados.bimestres[3].faltas
   }
 
   public verificaSituacaoFinal(res) {
@@ -125,19 +125,19 @@ export class DiarioEscolarComponent implements OnInit {
   }
 
   // Exibe as notas dos bimestres
-  public notasBimestre(result: any, res: any): void {
-    switch (res.id) {
+  public notasBimestre(notas: any, bimestre: any): void {
+    switch (bimestre.id) {
       case 1:
-        this.primeirobimestre = result;
+        this.primeirobimestre = notas;
         break;
       case 2:
-        this.segundobimestre = result;
+        this.segundobimestre = notas;
         break;
       case 3:
-        this.terceirobimestre = result;
+        this.terceirobimestre = notas;
         break;
       case 4:
-        this.quartobimestre = result;
+        this.quartobimestre = notas;
         break;
       default:
         break;

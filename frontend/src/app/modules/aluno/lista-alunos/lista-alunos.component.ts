@@ -11,12 +11,11 @@ export class ListaAlunosComponent implements OnInit {
 
   constructor(private api: AlunoService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.listaAlunos();
   }
-  public listaAlunos() {
-    this.api.getAlunos().subscribe((aluno) => {
-      this.alunos = aluno;
-    });
+  
+  public listaAlunos(): void {
+    this.api.getAlunos().subscribe((aluno) => this.alunos = aluno);
   }
 }

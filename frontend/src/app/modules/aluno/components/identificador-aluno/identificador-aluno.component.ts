@@ -15,11 +15,11 @@ export class IdentificadorAlunoComponent implements OnInit {
     private route: ActivatedRoute,
     private api: AlunoService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAlunoById();
   }
 
-  getAlunoById() {
+  public getAlunoById(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(aluno => this.aluno = aluno);
   }

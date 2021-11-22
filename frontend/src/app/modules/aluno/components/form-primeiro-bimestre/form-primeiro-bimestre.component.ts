@@ -17,12 +17,12 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     private route: ActivatedRoute
     ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formularioPrimeiroBimestre();
     this.populaDadosFormulario();
   }
 
-  populaDadosFormulario() {
+  public populaDadosFormulario(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(dados => {
       this.formPrimeiroBimestre = this.fb.group({
@@ -39,7 +39,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     });
   }
 
-  formularioPrimeiroBimestre() {
+  public formularioPrimeiroBimestre(): void {
     this.formPrimeiroBimestre = this.fb.group({
       primeira_nota_primeiro_bimestre: [''],
       segunda_nota_primeiro_bimestre: [''],
@@ -49,12 +49,12 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     });
   }
 
-  salvarDadosFormulario() {
+  public salvarDadosFormulario(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
       try {
         const params = paramsPrimeiroBimestre(dados, this.formPrimeiroBimestre);
-        this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados);});
+        this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
       } catch (error) {
         console.log(`Não foi possível atualizar as notas. Error: ${error}`);
       }

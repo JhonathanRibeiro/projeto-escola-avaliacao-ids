@@ -15,15 +15,14 @@ export class FormTerceiroBimestreComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formularioTerceiroBimestre();
     this.populaDadosFormulario();
   }
 
-  populaDadosFormulario() {
+ public populaDadosFormulario(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(dados => {
       this.formTerceiroBimestre = this.fb.group({
@@ -40,7 +39,7 @@ export class FormTerceiroBimestreComponent implements OnInit {
     });
   }
 
-  formularioTerceiroBimestre() {
+  public formularioTerceiroBimestre(): void {
     this.formTerceiroBimestre = this.fb.group({
       primeira_nota_terceiro_bimestre: ['', Validators.compose([Validators.required,])],
       segunda_nota_terceiro_bimestre: ['', Validators.compose([Validators.required])],
@@ -50,7 +49,7 @@ export class FormTerceiroBimestreComponent implements OnInit {
     });
   }
 
-  salvarDadosFormulario() {
+  public salvarDadosFormulario(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
       try {

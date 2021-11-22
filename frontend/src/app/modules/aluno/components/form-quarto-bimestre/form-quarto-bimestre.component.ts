@@ -18,12 +18,12 @@ export class FormQuartoBimestreComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formularioQuartoBimestre();
     this.populaDadosFormulario();
   }
 
-  populaDadosFormulario() {
+  public populaDadosFormulario(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.api.getAlunoById(id).subscribe(dados => {
       this.formQuartoBimestre = this.fb.group({
@@ -40,7 +40,7 @@ export class FormQuartoBimestreComponent implements OnInit {
     });
   }
 
-  formularioQuartoBimestre() {
+  public formularioQuartoBimestre(): void {
     this.formQuartoBimestre = this.fb.group({
       primeira_nota_quarto_bimestre: ['', Validators.compose([Validators.required])],
       segunda_nota_quarto_bimestre: ['', Validators.compose([Validators.required])],
@@ -50,7 +50,7 @@ export class FormQuartoBimestreComponent implements OnInit {
     });
   }
 
-  salvarDadosFormulario() {
+  public salvarDadosFormulario(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
       try {

@@ -60,7 +60,7 @@ export class DiarioEscolarComponent implements OnInit {
 
       dados.bimestres.filter((res: any) => {
         this.calculoMediaPonderada(res);
-        this.notasBimestre(Array(res), res);
+        this.notasBimestre(res);
         this.verificaSituacaoFinal(res);        
       });
     }, err => console.error(err));
@@ -110,10 +110,11 @@ export class DiarioEscolarComponent implements OnInit {
     return frequencia;
   }
   // Exibe as notas dos bimestres
-  public notasBimestre(notas: any, bimestre: any): void {
-    bimestre.id == 1 ? this.primeirobimestre = notas : '';
-    bimestre.id == 2 ? this.segundobimestre = notas : '';
-    bimestre.id == 3 ? this.terceirobimestre = notas : '';
-    bimestre.id == 4 ? this.quartobimestre = notas : '';
+  public notasBimestre(param: any): void {
+    const notas = Array(param);
+    param.id == 1 ? this.primeirobimestre = notas : '';
+    param.id == 2 ? this.segundobimestre = notas : '';
+    param.id == 3 ? this.terceirobimestre = notas : '';
+    param.id == 4 ? this.quartobimestre = notas : '';
   }
 }

@@ -111,10 +111,9 @@ export class DiarioEscolarComponent implements OnInit {
   }
   // Exibe as notas dos bimestres
   public notasBimestre(notas: any, bimestre: any): void {
-    const bimestreid = bimestre.id;
-    bimestreid == 1 ? this.primeirobimestre = notas : '';
-    bimestreid == 2 ? this.segundobimestre = notas : '';
-    bimestreid == 3 ? this.terceirobimestre = notas : '';
-    bimestreid == 4 ? this.quartobimestre = notas : '';
+    bimestre.id == 1 ? this.primeirobimestre = notas : '';
+    bimestre.id == 2 ? this.segundobimestre = notas : '';
+    bimestre.id == 3 ? this.terceirobimestre = notas : '';
+    bimestre.id == 4 ? this.quartobimestre = notas : '';
   }
 }

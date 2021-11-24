@@ -1,5 +1,5 @@
 // Retorna a porcentagem de frequência do aluno
-export function calculoFrequencia(freq: any, diasLetivos): any {
+export function calculoFrequencia(freq: any, diasLetivos) {
     const faltas = freq;
     const dias_letivos = diasLetivos;
 

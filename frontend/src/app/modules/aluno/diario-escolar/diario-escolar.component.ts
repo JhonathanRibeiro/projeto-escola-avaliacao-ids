@@ -2,6 +2,7 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Aluno } from 'src/app/models/aluno.model';
+import { calculoMediaPonderada } from '../helpers/CalculoMediaPonderada';
 
 @Component({
   selector: 'app-diario-escolar',
@@ -73,7 +74,7 @@ export class DiarioEscolarComponent implements OnInit {
   }
 
   public verificaSituacaoFinal(res): void {
-    this.totalfaltas = this.totalfaltas + parseInt(res.faltas)
+    this.totalfaltas += parseInt(res.faltas)
       this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
 
       if(this.presenca < this.minimoPresenca) {
@@ -88,24 +89,13 @@ export class DiarioEscolarComponent implements OnInit {
   }
   //Retorna a media ponderada de cada bimestre e a media final
   public calculoMediaPonderada(nota: any): void {
+    const bimestre = nota.id;
     const mediaPonderada = ((nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva)) /this.somaPesos;
-
-    switch (nota.id) {
-      case 1:
-        this.mediaprimeirobimestre = mediaPonderada
-        break;
-      case 2:
-        this.mediasegundobimestre = mediaPonderada
-        break;
-      case 3:
-      this.mediaterceirobimestre = mediaPonderada
-        break;
-      case 4:
-        this.mediaquartobimestre = mediaPonderada
-        break;
-      default:
-        break;
-    }
+    //Verifica o id do bimestre e em seguida atribui a media ponderada 
+    bimestre == 1 ? this.mediaprimeirobimestre = mediaPonderada: '';
+    bimestre == 2 ? this.mediasegundobimestre = mediaPonderada: '';
+    bimestre == 3 ? this.mediaterceirobimestre = mediaPonderada: '';
+    bimestre == 4 ? this.mediaquartobimestre = mediaPonderada: '';
     //soma todas as medias bimestrais e realiza o calculo da media simples, retornando a media final do aluno.
     const somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
     this.mediafinal = somaMediaBimestres / this.totalBimestres
@@ -114,7 +104,6 @@ export class DiarioEscolarComponent implements OnInit {
   public calculoFrequencia(freq: any): any {
     const faltas = freq;
     const dias_letivos = this.totalDiasLetivos;
-
     const diff = dias_letivos - faltas;
     const res = diff / dias_letivos;
     const frequencia = res * 100;
@@ -122,21 +111,10 @@ export class DiarioEscolarComponent implements OnInit {
   }
   // Exibe as notas dos bimestres
   public notasBimestre(notas: any, bimestre: any): void {
-    switch (bimestre.id) {
-      case 1:
-        this.primeirobimestre = notas;
-        break;
-      case 2:
-        this.segundobimestre = notas;
-        break;
-      case 3:
-        this.terceirobimestre = notas;
-        break;
-      case 4:
-        this.quartobimestre = notas;
-        break;
-      default:
-        break;
-    }
+    const bimestreid = bimestre.id;
+    bimestreid == 1 ? this.primeirobimestre = notas : '';
+    bimestreid == 2 ? this.segundobimestre = notas : '';
+    bimestreid == 3 ? this.terceirobimestre = notas : '';
+    bimestreid == 4 ? this.quartobimestre = notas : '';
   }
 }

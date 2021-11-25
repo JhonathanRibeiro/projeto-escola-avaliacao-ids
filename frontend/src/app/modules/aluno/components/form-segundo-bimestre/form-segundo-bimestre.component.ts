@@ -54,7 +54,7 @@ export class FormSegundoBimestreComponent implements OnInit {
     this.api.getAlunoById(id).subscribe(dados => {
       try {
         const params = paramsSegundoBimestre(dados, this.formSegundoBimestre);
-        if(params) {
+        if(params && params !== null) {
           this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
         } else {
           throw new Error('Não foi possível atualizar as notas.');

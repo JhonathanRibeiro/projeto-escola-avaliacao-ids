@@ -113,7 +113,7 @@ export class DiarioEscolarComponent implements OnInit {
   public notasBimestre(param: any): void {
     try {
       const notas = Array(param);
-      if(!notas) {
+      if(notas && notas.length !== 0) {
         param.id == 1 ? this.primeirobimestre = notas : '';
         param.id == 2 ? this.segundobimestre = notas : '';
         param.id == 3 ? this.terceirobimestre = notas : '';

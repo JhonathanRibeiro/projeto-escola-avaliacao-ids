@@ -61,41 +61,41 @@ export class DiarioEscolarComponent implements OnInit {
       dados.bimestres.filter((res: any) => {
         this.calculoMediaPonderada(res);
         this.notasBimestre(res);
-        this.verificaSituacaoFinal(res);        
+        this.verificaSituacaoFinal(res);
       });
     }, err => console.error(err));
   }
   //Retorna as faltas por bimestre
   public faltasPorBimestre(dados): void {
     this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
-    this.faltasSegundoBimestre  = dados.bimestres[1].faltas
+    this.faltasSegundoBimestre = dados.bimestres[1].faltas
     this.faltasTerceiroBimestre = dados.bimestres[2].faltas
-    this.faltasQuartoBimestre   = dados.bimestres[3].faltas
+    this.faltasQuartoBimestre = dados.bimestres[3].faltas
   }
 
   public verificaSituacaoFinal(res): void {
     this.totalfaltas += parseInt(res.faltas)
-      this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
+    this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
 
-      if(this.presenca < this.minimoPresenca) {
-        this.situacao = 'Reprovado por falta';
-      } else if (this.mediafinal < this.mediaRecuperacao) {
-        this.situacao = 'Reprovado';
-      } else if (this.mediafinal >= this.mediaRecuperacao && this.mediafinal < this.mediaAprovado) {
-        this.situacao = 'Recuperação';
-      } else {
-        this.situacao = 'Aprovado';
-      }
+    if (this.presenca < this.minimoPresenca) {
+      this.situacao = 'Reprovado por falta';
+    } else if (this.mediafinal < this.mediaRecuperacao) {
+      this.situacao = 'Reprovado';
+    } else if (this.mediafinal >= this.mediaRecuperacao && this.mediafinal < this.mediaAprovado) {
+      this.situacao = 'Recuperação';
+    } else {
+      this.situacao = 'Aprovado';
+    }
   }
   //Retorna a media ponderada de cada bimestre e a media final
   public calculoMediaPonderada(nota: any): void {
     const bimestre = nota.id;
-    const mediaPonderada = ((nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva)) /this.somaPesos;
+    const mediaPonderada = ((nota.n1 * this.pesoParticipacao) + (nota.n2 * this.pesoEntrega) + (nota.n3 * this.pesoTrabalho) + (nota.n4 * this.pesoProva)) / this.somaPesos;
     //Verifica o id do bimestre e em seguida atribui a media ponderada 
-    bimestre == 1 ? this.mediaprimeirobimestre = mediaPonderada: '';
-    bimestre == 2 ? this.mediasegundobimestre = mediaPonderada: '';
-    bimestre == 3 ? this.mediaterceirobimestre = mediaPonderada: '';
-    bimestre == 4 ? this.mediaquartobimestre = mediaPonderada: '';
+    bimestre == 1 ? this.mediaprimeirobimestre = mediaPonderada : '';
+    bimestre == 2 ? this.mediasegundobimestre = mediaPonderada : '';
+    bimestre == 3 ? this.mediaterceirobimestre = mediaPonderada : '';
+    bimestre == 4 ? this.mediaquartobimestre = mediaPonderada : '';
     //soma todas as medias bimestrais e realiza o calculo da media simples, retornando a media final do aluno.
     const somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
     this.mediafinal = somaMediaBimestres / this.totalBimestres
@@ -111,10 +111,18 @@ export class DiarioEscolarComponent implements OnInit {
   }
   // Exibe as notas dos bimestres
   public notasBimestre(param: any): void {
-    const notas = Array(param);
-    param.id == 1 ? this.primeirobimestre = notas : '';
-    param.id == 2 ? this.segundobimestre = notas : '';
-    param.id == 3 ? this.terceirobimestre = notas : '';
-    param.id == 4 ? this.quartobimestre = notas : '';
+    try {
+      const notas = Array(param);
+      if(!notas) {
+        param.id == 1 ? this.primeirobimestre = notas : '';
+        param.id == 2 ? this.segundobimestre = notas : '';
+        param.id == 3 ? this.terceirobimestre = notas : '';
+        param.id == 4 ? this.quartobimestre = notas : '';
+      } else {
+        throw new Error('Não foi possível recuperar as notas dos bimestres');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

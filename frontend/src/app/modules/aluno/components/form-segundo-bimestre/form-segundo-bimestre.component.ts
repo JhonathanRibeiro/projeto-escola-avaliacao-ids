@@ -52,12 +52,16 @@ export class FormSegundoBimestreComponent implements OnInit {
   public salvarDadosFormulario(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.api.getAlunoById(id).subscribe(dados => {
-     try {
-      const params = paramsSegundoBimestre(dados, this.formSegundoBimestre);
-      this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados);});
-     } catch (error) {
-       console.log(`Não foi possível atualizar as notas. Error: ${error}`);
-     }
+      try {
+        const params = paramsSegundoBimestre(dados, this.formSegundoBimestre);
+        if(params) {
+          this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
+        } else {
+          throw new Error('Não foi possível atualizar as notas.');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     });
   }
 

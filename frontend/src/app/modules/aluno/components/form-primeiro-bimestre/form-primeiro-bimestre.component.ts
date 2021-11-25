@@ -54,9 +54,13 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     this.api.getAlunoById(id).subscribe(dados => {
       try {
         const params = paramsPrimeiroBimestre(dados, this.formPrimeiroBimestre);
-        this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
+        if(params) {
+          this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
+        } else {
+          throw new Error('Não foi possível atualizar as notas.');
+        }
       } catch (error) {
-        console.log(`Não foi possível atualizar as notas. Error: ${error}`);
+        console.log(error);
       }
     });
   }

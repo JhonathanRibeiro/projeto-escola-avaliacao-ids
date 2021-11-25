@@ -67,15 +67,24 @@ export class DiarioEscolarComponent implements OnInit {
   }
   //Retorna as faltas por bimestre
   public faltasPorBimestre(dados): void {
-    this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
-    this.faltasSegundoBimestre = dados.bimestres[1].faltas
-    this.faltasTerceiroBimestre = dados.bimestres[2].faltas
-    this.faltasQuartoBimestre = dados.bimestres[3].faltas
+    try {
+      if(dados && dados !== {}) {
+        this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
+        this.faltasSegundoBimestre = dados.bimestres[1].faltas
+        this.faltasTerceiroBimestre = dados.bimestres[2].faltas
+        this.faltasQuartoBimestre = dados.bimestres[3].faltas
+      } else {
+        throw new Error('Não foi possível recuperar as faltas.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   public verificaSituacaoFinal(res): void {
     this.totalfaltas += parseInt(res.faltas)
     this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
+    console.log(this.presenca)
 
     if (this.presenca < this.minimoPresenca) {
       this.situacao = 'Reprovado por falta';
@@ -121,7 +130,7 @@ export class DiarioEscolarComponent implements OnInit {
       } else {
         throw new Error('Não foi possível recuperar as notas dos bimestres');
       }
-    } catch (error) {
+    }catch (error) {
       console.error(error);
     }
   }

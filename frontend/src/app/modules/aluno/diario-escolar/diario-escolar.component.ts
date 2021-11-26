@@ -9,16 +9,14 @@ import { DadosBimetre } from '../helpers/DadosBimestre';
   templateUrl: './diario-escolar.component.html',
   styleUrls: ['./diario-escolar.component.css']
 })
-export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
-  constructor(
-    private api: AlunoService,
-    private route: ActivatedRoute) { super(); }
+export class DiarioEscolarComponent extends DadosBimetre implements OnInit {
+  public id = this.route.snapshot.paramMap.get('id');
+  constructor(private api: AlunoService, private route: ActivatedRoute) { super(); }
 
-  ngOnInit() {this.situacaoFinalAluno()}
+  ngOnInit() { this.situacaoFinalAluno() }
   //Irá cruzar as informações obtidas para retornar a situação final do aluno
   public situacaoFinalAluno(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.api.getAlunoById(id).subscribe(dados => {
+    this.api.getAlunoById(this.id).subscribe(dados => {
       this.aluno = Array(dados);
       this.faltasPorBimestre(dados);
 
@@ -32,7 +30,7 @@ export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
   //Retorna as faltas por bimestre
   public faltasPorBimestre(dados): void {
     try {
-      if(dados && dados !== {}) {
+      if (dados && dados !== {}) {
         this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
         this.faltasSegundoBimestre = dados.bimestres[1].faltas
         this.faltasTerceiroBimestre = dados.bimestres[2].faltas
@@ -44,7 +42,7 @@ export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
       console.error(error);
     }
   }
-
+  //Retorna a situação final do aluno
   public verificaSituacaoFinal(res): void {
     this.totalfaltas += parseInt(res.faltas)
     this.presenca = calculoFrequencia(this.totalfaltas, this.totalDiasLetivos)
@@ -76,7 +74,7 @@ export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
   public notasBimestre(param: any): void {
     try {
       const notas = Array(param);
-      if(notas && notas.length !== 0) {
+      if (notas && notas.length !== 0) {
         param.id == 1 ? this.primeirobimestre = notas : '';
         param.id == 2 ? this.segundobimestre = notas : '';
         param.id == 3 ? this.terceirobimestre = notas : '';
@@ -84,7 +82,7 @@ export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
       } else {
         throw new Error(`Não foi possível recuperar as notas do ${param.id} bimestre.`);
       }
-    }catch (err) {
+    } catch (err) {
       console.error(err.message);
     }
   }

@@ -1,52 +1,19 @@
 import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Aluno } from 'src/app/models/aluno.model';
 import { calculoFrequencia } from '../helpers/CalculoFrequenciaEscolar';
+import { DadosBimetre } from '../helpers/DadosBimestre';
 
 @Component({
   selector: 'app-diario-escolar',
   templateUrl: './diario-escolar.component.html',
   styleUrls: ['./diario-escolar.component.css']
 })
-export class DiarioEscolarComponent implements OnInit {
-  aluno: Aluno;
-  primeirobimestre: Aluno[];
-  segundobimestre: Aluno[];
-  terceirobimestre: Aluno[];
-  quartobimestre: Aluno[];
-
-  faltasPrimeiroBimestre: number;
-  faltasSegundoBimestre: number;
-  faltasTerceiroBimestre: number;
-  faltasQuartoBimestre: number;
-
-  mediaprimeirobimestre: number;
-  mediasegundobimestre: number;
-  mediaterceirobimestre: number;
-  mediaquartobimestre: number;
-
-  mediafinal: number;
-  totalfaltas: number = 0;
-  presenca: number = 0;
-  situacao: string = '';
-
-  somaPesos: number = 10;
-  totalDiasLetivos: number = 160;
-  totalBimestres: number = 4;
-
-  pesoParticipacao: number = 1.5;
-  pesoEntrega: number = 2.5;
-  pesoTrabalho: number = 3;
-  pesoProva: number = 3;
-  minimoPresenca: number = 75;
-  mediaRecuperacao: number = 5;
-  mediaAprovado: number = 6;
-
+export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
   constructor(
     private api: AlunoService,
     private route: ActivatedRoute
-  ) { }
+  ) { super(); }
 
   ngOnInit() {
     this.situacaoFinalAluno();
@@ -59,7 +26,6 @@ export class DiarioEscolarComponent implements OnInit {
       this.faltasPorBimestre(dados);
 
       dados.bimestres.filter((res: any) => {
-        // this.calculoMediaPonderada(res);
         this.calculoMediaPonderada(res);
         this.notasBimestre(res);
         this.verificaSituacaoFinal(res);

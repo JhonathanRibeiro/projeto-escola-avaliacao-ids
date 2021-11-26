@@ -12,12 +12,9 @@ import { DadosBimetre } from '../helpers/DadosBimestre';
 export class DiarioEscolarComponent extends DadosBimetre implements OnInit{
   constructor(
     private api: AlunoService,
-    private route: ActivatedRoute
-  ) { super(); }
+    private route: ActivatedRoute) { super(); }
 
-  ngOnInit() {
-    this.situacaoFinalAluno();
-  }
+  ngOnInit() {this.situacaoFinalAluno()}
   //Irá cruzar as informações obtidas para retornar a situação final do aluno
   public situacaoFinalAluno(): void {
     const id = this.route.snapshot.paramMap.get('id');

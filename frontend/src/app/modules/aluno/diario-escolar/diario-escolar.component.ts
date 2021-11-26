@@ -2,7 +2,7 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Aluno } from 'src/app/models/aluno.model';
-import { calculoMediaPonderada } from '../helpers/CalculoMediaPonderada';
+import { calculoFrequencia } from '../helpers/CalculoFrequenciaEscolar';
 
 @Component({
   selector: 'app-diario-escolar',
@@ -59,6 +59,7 @@ export class DiarioEscolarComponent implements OnInit {
       this.faltasPorBimestre(dados);
 
       dados.bimestres.filter((res: any) => {
+        // this.calculoMediaPonderada(res);
         this.calculoMediaPonderada(res);
         this.notasBimestre(res);
         this.verificaSituacaoFinal(res);
@@ -83,8 +84,7 @@ export class DiarioEscolarComponent implements OnInit {
 
   public verificaSituacaoFinal(res): void {
     this.totalfaltas += parseInt(res.faltas)
-    this.presenca = parseInt(this.calculoFrequencia(this.totalfaltas).toFixed(2))
-    console.log(this.presenca)
+    this.presenca = calculoFrequencia(this.totalfaltas, this.totalDiasLetivos)
 
     if (this.presenca < this.minimoPresenca) {
       this.situacao = 'Reprovado por falta';
@@ -109,15 +109,6 @@ export class DiarioEscolarComponent implements OnInit {
     const somaMediaBimestres = this.mediaprimeirobimestre + this.mediasegundobimestre + this.mediaterceirobimestre + this.mediaquartobimestre;
     this.mediafinal = somaMediaBimestres / this.totalBimestres
   }
-  // Retorna a porcentagem de frequência do aluno
-  public calculoFrequencia(freq: any): any {
-    const faltas = freq;
-    const dias_letivos = this.totalDiasLetivos;
-    const diff = dias_letivos - faltas;
-    const res = diff / dias_letivos;
-    const frequencia = res * 100;
-    return frequencia;
-  }
   // Exibe as notas dos bimestres
   public notasBimestre(param: any): void {
     try {
@@ -128,10 +119,10 @@ export class DiarioEscolarComponent implements OnInit {
         param.id == 3 ? this.terceirobimestre = notas : '';
         param.id == 4 ? this.quartobimestre = notas : '';
       } else {
-        throw new Error('Não foi possível recuperar as notas dos bimestres');
+        throw new Error(`Não foi possível recuperar as notas do ${param.id} bimestre.`);
       }
-    }catch (error) {
-      console.error(error);
+    }catch (err) {
+      console.error(err.message);
     }
   }
 }

@@ -120,12 +120,12 @@
                     <td>
                         <span> {{aluno.nome | uppercase}}</span>
                     </td>
-                    <td>160</td>
+                    <td>{{totalDiasLetivos}}</td>
                     <td>
                         <span> {{totalfaltas}}</span>
                     </td>
                     <td>
-                        <span> {{ calculoFrequencia(totalfaltas) | number: '1.0-0'}}%</span>
+                        <span> {{ presenca | number: '1.0-0'}}%</span>
                     </td>
                 </tr>
             </tbody>

@@ -1,6 +1,6 @@
 import { Aluno } from "src/app/models/aluno.model";
 
-export class DadosBimetre {
+export class DadosBimestre {
     aluno: Aluno;
     primeirobimestre: Aluno[];
     segundobimestre: Aluno[];

@@ -2,21 +2,21 @@ import { AlunoService } from './../aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { calculoFrequencia } from '../helpers/CalculoFrequenciaEscolar';
-import { DadosBimetre } from '../helpers/DadosBimestre';
+import { DadosBimestre } from '../helpers/DadosBimestre';
 
 @Component({
   selector: 'app-diario-escolar',
   templateUrl: './diario-escolar.component.html',
   styleUrls: ['./diario-escolar.component.css']
 })
-export class DiarioEscolarComponent extends DadosBimetre implements OnInit {
-  public id = this.route.snapshot.paramMap.get('id');
+export class DiarioEscolarComponent extends DadosBimestre implements OnInit {
   constructor(private api: AlunoService, private route: ActivatedRoute) { super(); }
 
   ngOnInit() { this.situacaoFinalAluno() }
   //Irá cruzar as informações obtidas para retornar a situação final do aluno
   public situacaoFinalAluno(): void {
-    this.api.getAlunoById(this.id).subscribe(dados => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.api.getAlunoById(id).subscribe(dados => {
       this.aluno = Array(dados);
       this.faltasPorBimestre(dados);
 
@@ -29,18 +29,10 @@ export class DiarioEscolarComponent extends DadosBimetre implements OnInit {
   }
   //Retorna as faltas por bimestre
   public faltasPorBimestre(dados): void {
-    try {
-      if (dados && dados !== {}) {
-        this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
-        this.faltasSegundoBimestre = dados.bimestres[1].faltas
-        this.faltasTerceiroBimestre = dados.bimestres[2].faltas
-        this.faltasQuartoBimestre = dados.bimestres[3].faltas
-      } else {
-        throw new Error('Não foi possível recuperar as faltas.');
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    this.faltasPrimeiroBimestre = dados.bimestres[0].faltas    
+    this.faltasSegundoBimestre = dados.bimestres[1].faltas    
+    this.faltasTerceiroBimestre = dados.bimestres[2].faltas    
+    this.faltasQuartoBimestre = dados.bimestres[3].faltas    
   }
   //Retorna a situação final do aluno
   public verificaSituacaoFinal(res): void {

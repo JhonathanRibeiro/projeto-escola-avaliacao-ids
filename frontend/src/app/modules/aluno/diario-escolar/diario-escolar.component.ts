@@ -29,10 +29,10 @@ export class DiarioEscolarComponent extends DadosBimestre implements OnInit {
   }
   //Retorna as faltas por bimestre
   public faltasPorBimestre(dados): void {
-    this.faltasPrimeiroBimestre = dados.bimestres[0].faltas    
-    this.faltasSegundoBimestre = dados.bimestres[1].faltas    
-    this.faltasTerceiroBimestre = dados.bimestres[2].faltas    
-    this.faltasQuartoBimestre = dados.bimestres[3].faltas    
+    this.faltasPrimeiroBimestre = dados.bimestres[0].faltas
+    this.faltasSegundoBimestre = dados.bimestres[1].faltas
+    this.faltasTerceiroBimestre = dados.bimestres[2].faltas
+    this.faltasQuartoBimestre = dados.bimestres[3].faltas
   }
   //Retorna a situação final do aluno
   public verificaSituacaoFinal(res): void {

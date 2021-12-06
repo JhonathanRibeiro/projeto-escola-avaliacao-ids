@@ -6,7 +6,7 @@ import { LancarnotasComponent } from './lancarnotas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { FormPrimeiroBimestreComponent } from '../components/form-primeiro-bimestre/form-primeiro-bimestre.component';
 import { FormSegundoBimestreComponent } from '../components/form-segundo-bimestre/form-segundo-bimestre.component';
 import { FormTerceiroBimestreComponent } from '../components/form-terceiro-bimestre/form-terceiro-bimestre.component';
@@ -14,9 +14,13 @@ import { FormQuartoBimestreComponent } from '../components/form-quarto-bimestre/
 import { TableHeadComponent } from '../components/table-head/table-head.component';
 import { IdentificadorAlunoComponent } from '../components/identificador-aluno/identificador-aluno.component';
 
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+
 @NgModule({
   declarations: [
-    LancarnotasComponent, 
+    LancarnotasComponent,
     FormPrimeiroBimestreComponent,
     FormSegundoBimestreComponent,
     FormTerceiroBimestreComponent,
@@ -30,8 +34,11 @@ import { IdentificadorAlunoComponent } from '../components/identificador-aluno/i
     DropdownModule,
     FormsModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MessagesModule,
+    ToastModule,
+    MessageModule,
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]  
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LancarnotasModule { }

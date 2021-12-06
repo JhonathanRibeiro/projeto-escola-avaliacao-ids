@@ -1,101 +1,93 @@
 <form [formGroup]="formPrimeiroBimestre" (ngSubmit)="salvarDadosFormulario()">
-<table class="styled-table">
-    <thead>
-        <tr>
-            <td ROWSPAN=2 class="text-center">
-                <b>Disciplina</b>
-            </td>
-            <td ROWSPAN=2 class="text-center">
-                <b>Peso</b>
-            </td>
-            <th colspan="2">1º Bimestre</th>
-        </tr>
-        <tr>
-            <th>Nota</th>
-            <th>Falta</th>
-        </tr>
-    </thead>
-    <tbody class="text-center">
-        <tr>
-            <th class="titulo-atividade">Participação em sala de aula</th>
-            <td>1.5</td>
-            <td>
-                <input 
-                type="number"
-                maxlength="3"
-                formControlName="primeira_nota_primeiro_bimestre" 
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
 
-                <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
-                <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
-                </div>
-            </td>
+    <p-toast position="top-right"></p-toast>
 
-            <td>
-                <input 
-                type="number" 
-                maxlength="2"
-                formControlName="faltas_primeiro_bimestre" 
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 40) this.value = 40">
+    <!-- <button type="button" pButton (click)="showError()" label=" Toast position Example"
+        class="ui-button-error"></button> -->
 
-                <div *ngIf="!faltas_primeiro_bimestre.pristine && faltas_primeiro_bimestre.errors">
-                    <p *ngIf="faltas_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
-                </div>
-            </td>
-        </tr>
-       
-        <tr>
-            <th class="titulo-atividade">Entrega das tarefas</th>
-            <td>2.5</td>
-            <td>
-                <input 
-                type="number" 
-                maxlength="3"
-                formControlName="segunda_nota_primeiro_bimestre" 
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
 
-                <div *ngIf="!segunda_nota_primeiro_bimestre.pristine && segunda_nota_primeiro_bimestre.errors">
-                <p *ngIf="segunda_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
-                </div>
-            </td>
-        </tr>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <td ROWSPAN=2 class="text-center">
+                    <b>Disciplina</b>
+                </td>
+                <td ROWSPAN=2 class="text-center">
+                    <b>Peso</b>
+                </td>
+                <th colspan="2">1º Bimestre</th>
+            </tr>
+            <tr>
+                <th>Nota</th>
+                <th>Falta</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr>
+                <th class="titulo-atividade">Participação em sala de aula</th>
+                <td>1.5</td>
+                <td>
+                    <input type="number" maxlength="3" formControlName="primeira_nota_primeiro_bimestre"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
 
-        <tr>
-            <th class="titulo-atividade">Trabalho Bimestral</th>
-            <td>3.0</td>
-            <td>
-                <input 
-                type="number" 
-                maxlength="3"
-                formControlName="terceira_nota_primeiro_bimestre" 
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+                    <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
+                        <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
+                </td>
 
-                <div *ngIf="!terceira_nota_primeiro_bimestre.pristine && terceira_nota_primeiro_bimestre.errors">
-                <p *ngIf="terceira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
-                </div>
-            </td>
-        </tr>
+                <td>
+                    <input type="number" maxlength="2" formControlName="faltas_primeiro_bimestre"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 40) this.value = 40">
 
-        <tr>
-            <th class="titulo-atividade">Prova Bimestral</th>
-            <td>3.0</td>
-            <td>
-                <input 
-                type="number" 
-                maxlength="3"
-                formControlName="quarta_nota_primeiro_bimestre" 
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+                    <div *ngIf="!faltas_primeiro_bimestre.pristine && faltas_primeiro_bimestre.errors">
+                        <p *ngIf="faltas_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
+                </td>
+            </tr>
 
-            <div *ngIf="!quarta_nota_primeiro_bimestre.pristine && quarta_nota_primeiro_bimestre.errors">
-                <p *ngIf="quarta_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
-            </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <tr>
+                <th class="titulo-atividade">Entrega das tarefas</th>
+                <td>2.5</td>
+                <td>
+                    <input type="number" maxlength="3" formControlName="segunda_nota_primeiro_bimestre"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
 
-<div class="">
-    <button pButton label="Salvar" [disabled]="formPrimeiroBimestre.invalid"></button>&nbsp;
-    <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
-</div>
+                    <div *ngIf="!segunda_nota_primeiro_bimestre.pristine && segunda_nota_primeiro_bimestre.errors">
+                        <p *ngIf="segunda_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="titulo-atividade">Trabalho Bimestral</th>
+                <td>3.0</td>
+                <td>
+                    <input type="number" maxlength="3" formControlName="terceira_nota_primeiro_bimestre"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+
+                    <div *ngIf="!terceira_nota_primeiro_bimestre.pristine && terceira_nota_primeiro_bimestre.errors">
+                        <p *ngIf="terceira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="titulo-atividade">Prova Bimestral</th>
+                <td>3.0</td>
+                <td>
+                    <input type="number" maxlength="3" formControlName="quarta_nota_primeiro_bimestre"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+
+                    <div *ngIf="!quarta_nota_primeiro_bimestre.pristine && quarta_nota_primeiro_bimestre.errors">
+                        <p *ngIf="quarta_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="">
+        <button pButton label="Salvar" [disabled]="formPrimeiroBimestre.invalid"></button>&nbsp;
+        <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
+    </div>
 </form>

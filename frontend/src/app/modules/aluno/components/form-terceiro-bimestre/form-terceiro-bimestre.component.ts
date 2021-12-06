@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AlunoService } from '../../aluno.service';
 import { paramsTerceiroBimestre } from '../../helpers/params';
 
@@ -15,7 +16,9 @@ export class FormTerceiroBimestreComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private messageService: MessageService    
+    ) { }
 
   ngOnInit(): void {
     this.formularioTerceiroBimestre();
@@ -55,12 +58,13 @@ export class FormTerceiroBimestreComponent implements OnInit {
       try {
         const params = paramsTerceiroBimestre(dados, this.formTerceiroBimestre);
         if(params && params !== null) {
+          this.messageService.add({ severity: 'success', summary: '', detail: `Dados do aluno ${dados.nome} atualizados com sucesso.`})
           this.api.atualizaBimestre(id, params).subscribe(dados =>{console.log(dados)});
         } else {
           throw new Error('Não foi possível atualizar as notas.');
         }
       } catch (error) {
-        console.log(error);
+        this.messageService.add({ severity: 'Error', summary: '', detail: `${error.message}`});
       }
     });
   }

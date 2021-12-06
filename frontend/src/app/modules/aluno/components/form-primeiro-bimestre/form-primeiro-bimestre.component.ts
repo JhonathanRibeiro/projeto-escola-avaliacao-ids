@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
 import { paramsPrimeiroBimestre } from '../../helpers/params';
-import { Message } from 'primeng/components/common/message';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -13,8 +12,6 @@ import { MessageService } from 'primeng/api';
 })
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
-
-  msgs1: Message[];
 
   constructor(
     private fb: FormBuilder,
@@ -26,10 +23,6 @@ export class FormPrimeiroBimestreComponent implements OnInit {
   ngOnInit(): void {
     this.formularioPrimeiroBimestre();
     this.populaDadosFormulario();
-  }
-
-  public showError() {
-    this.messageService.add({ severity: 'error', summary: 'Server error', detail: '500 error' });
   }
 
   public populaDadosFormulario(): void {
@@ -65,8 +58,8 @@ export class FormPrimeiroBimestreComponent implements OnInit {
       try {
         const params = paramsPrimeiroBimestre(dados, this.formPrimeiroBimestre);
         if (params && params !== null) {
+          this.messageService.add({ severity: 'success', summary: '', detail: `Dados do aluno ${dados.nome} atualizados com sucesso.`})
           this.api.atualizaBimestre(id, params).subscribe(dados => { console.log(dados) });
-          this.messageService.add({ severity: 'success', summary: '', detail: '' });
         } else {
           throw new Error('Não foi possível atualizar as notas.');
         }

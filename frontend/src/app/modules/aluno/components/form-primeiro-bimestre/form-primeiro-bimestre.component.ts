@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
 import { paramsPrimeiroBimestre } from '../../helpers/params';
@@ -17,6 +17,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
     private fb: FormBuilder,
     private api: AlunoService,
     private route: ActivatedRoute,
+    private router: Router,
     private messageService: MessageService
   ) { }
 
@@ -68,6 +69,10 @@ export class FormPrimeiroBimestreComponent implements OnInit {
       }
     });
   }
+
+ public cancelar(): void {
+  this.router.navigateByUrl('lista-alunos');
+ }
 
   get primeira_nota_primeiro_bimestre() {
     return this.formPrimeiroBimestre.get('primeira_nota_primeiro_bimestre');

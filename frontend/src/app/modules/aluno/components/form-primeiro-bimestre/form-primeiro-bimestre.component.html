@@ -1,11 +1,5 @@
 <form [formGroup]="formPrimeiroBimestre" (ngSubmit)="salvarDadosFormulario()">
-
     <p-toast position="top-right"></p-toast>
-
-    <!-- <button type="button" pButton (click)="showError()" label=" Toast position Example"
-        class="ui-button-error"></button> -->
-
-
     <table class="styled-table">
         <thead>
             <tr>
@@ -88,6 +82,6 @@
 
     <div class="">
         <button pButton label="Salvar" [disabled]="formPrimeiroBimestre.invalid"></button>&nbsp;
-        <button pButton label="Cancelar" routerLink="/lista-alunos" class="ui-button-secondary"></button>
+        <button pButton label="Cancelar" (click)="cancelar()" class="ui-button-secondary border"></button>&nbsp;
     </div>
 </form>

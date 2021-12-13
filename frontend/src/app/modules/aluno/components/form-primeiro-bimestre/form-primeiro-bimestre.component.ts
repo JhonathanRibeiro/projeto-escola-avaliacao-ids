@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
 })
 export class FormPrimeiroBimestreComponent implements OnInit {
   formPrimeiroBimestre: FormGroup;
-
+  indicePrimeiroBimestre = 0;
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
@@ -34,11 +34,11 @@ export class FormPrimeiroBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_primeiro_bimestre: [dados.bimestres[0].n1, Validators.required],
-        segunda_nota_primeiro_bimestre: [dados.bimestres[0].n2, Validators.required],
-        terceira_nota_primeiro_bimestre: [dados.bimestres[0].n3, Validators.required],
-        quarta_nota_primeiro_bimestre: [dados.bimestres[0].n4, Validators.required],
-        faltas_primeiro_bimestre: [dados.bimestres[0].faltas, Validators.required]
+        primeira_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n1, Validators.required],
+        segunda_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n2, Validators.required],
+        terceira_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n3, Validators.required],
+        quarta_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n4, Validators.required],
+        faltas_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].faltas, Validators.required]
       });
     });
   }
@@ -74,23 +74,13 @@ export class FormPrimeiroBimestreComponent implements OnInit {
   this.router.navigateByUrl('lista-alunos');
  }
 
-  get primeira_nota_primeiro_bimestre() {
-    return this.formPrimeiroBimestre.get('primeira_nota_primeiro_bimestre');
-  }
+  get primeira_nota_primeiro_bimestre() {return this.formPrimeiroBimestre.get('primeira_nota_primeiro_bimestre');}
 
-  get faltas_primeiro_bimestre() {
-    return this.formPrimeiroBimestre.get('faltas_primeiro_bimestre');
-  }
+  get faltas_primeiro_bimestre() {return this.formPrimeiroBimestre.get('faltas_primeiro_bimestre');}
 
-  get segunda_nota_primeiro_bimestre() {
-    return this.formPrimeiroBimestre.get('segunda_nota_primeiro_bimestre');
-  }
+  get segunda_nota_primeiro_bimestre() {return this.formPrimeiroBimestre.get('segunda_nota_primeiro_bimestre');}
 
-  get terceira_nota_primeiro_bimestre() {
-    return this.formPrimeiroBimestre.get('terceira_nota_primeiro_bimestre');
-  }
+  get terceira_nota_primeiro_bimestre() {return this.formPrimeiroBimestre.get('terceira_nota_primeiro_bimestre');}
 
-  get quarta_nota_primeiro_bimestre() {
-    return this.formPrimeiroBimestre.get('quarta_nota_primeiro_bimestre');
-  }
+  get quarta_nota_primeiro_bimestre() {return this.formPrimeiroBimestre.get('quarta_nota_primeiro_bimestre');}
 }

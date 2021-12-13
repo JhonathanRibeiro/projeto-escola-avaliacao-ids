@@ -12,7 +12,7 @@ import { paramsQuartoBimestre } from '../../helpers/params';
 })
 export class FormQuartoBimestreComponent implements OnInit {
   formQuartoBimestre: FormGroup;
-
+  indiceQuartoBimestre = 3;
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
@@ -21,8 +21,7 @@ export class FormQuartoBimestreComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioQuartoBimestre();
-    this.populaDadosFormulario();
-  }
+    this.populaDadosFormulario(); }
 
   public populaDadosFormulario(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -32,11 +31,11 @@ export class FormQuartoBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_quarto_bimestre: dados.bimestres[3].n1,
-        segunda_nota_quarto_bimestre: dados.bimestres[3].n2,
-        terceira_nota_quarto_bimestre: dados.bimestres[3].n3,
-        quarta_nota_quarto_bimestre: dados.bimestres[3].n4,
-        faltas_quarto_bimestre: dados.bimestres[3].faltas
+        primeira_nota_quarto_bimestre: dados.bimestres[this.indiceQuartoBimestre].n1,
+        segunda_nota_quarto_bimestre: dados.bimestres[this.indiceQuartoBimestre].n2,
+        terceira_nota_quarto_bimestre: dados.bimestres[this.indiceQuartoBimestre].n3,
+        quarta_nota_quarto_bimestre: dados.bimestres[this.indiceQuartoBimestre].n4,
+        faltas_quarto_bimestre: dados.bimestres[this.indiceQuartoBimestre].faltas
       });
     });
   }
@@ -68,23 +67,13 @@ export class FormQuartoBimestreComponent implements OnInit {
     });
   }
 
-  get primeira_nota_quarto_bimestre() {
-    return this.formQuartoBimestre.get('primeira_nota_quarto_bimestre');
-  }
+  get primeira_nota_quarto_bimestre() { return this.formQuartoBimestre.get('primeira_nota_quarto_bimestre');}
 
-  get segunda_nota_quarto_bimestre() {
-    return this.formQuartoBimestre.get('segunda_nota_quarto_bimestre');
-  }
+  get segunda_nota_quarto_bimestre()  { return this.formQuartoBimestre.get('segunda_nota_quarto_bimestre');}
 
-  get terceira_nota_quarto_bimestre() {
-    return this.formQuartoBimestre.get('terceira_nota_quarto_bimestre');
-  }
+  get terceira_nota_quarto_bimestre() { return this.formQuartoBimestre.get('terceira_nota_quarto_bimestre');}
 
-  get quarta_nota_quarto_bimestre() {
-    return this.formQuartoBimestre.get('quarta_nota_quarto_bimestre');
-  }
+  get quarta_nota_quarto_bimestre()  { return this.formQuartoBimestre.get('quarta_nota_quarto_bimestre');}
 
-  get faltas_quarto_bimestre() {
-    return this.formQuartoBimestre.get('faltas_quarto_bimestre');
-  }
+  get faltas_quarto_bimestre() { return this.formQuartoBimestre.get('faltas_quarto_bimestre');}
 }

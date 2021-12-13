@@ -12,7 +12,7 @@ import { paramsSegundoBimestre } from '../../helpers/params';
 })
 export class FormSegundoBimestreComponent implements OnInit {
   formSegundoBimestre: FormGroup;
-
+  indiceSegundoBimestre = 1;
   constructor(
     private fb: FormBuilder,
     private api: AlunoService,
@@ -33,11 +33,11 @@ export class FormSegundoBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_segundo_bimestre: dados.bimestres[1].n1,
-        segunda_nota_segundo_bimestre: dados.bimestres[1].n2,
-        terceira_nota_segundo_bimestre: dados.bimestres[1].n3,
-        quarta_nota_segundo_bimestre: dados.bimestres[1].n4,
-        faltas_segundo_bimestre: dados.bimestres[1].faltas
+        primeira_nota_segundo_bimestre: dados.bimestres[this.indiceSegundoBimestre].n1,
+        segunda_nota_segundo_bimestre: dados.bimestres[this.indiceSegundoBimestre].n2,
+        terceira_nota_segundo_bimestre: dados.bimestres[this.indiceSegundoBimestre].n3,
+        quarta_nota_segundo_bimestre: dados.bimestres[this.indiceSegundoBimestre].n4,
+        faltas_segundo_bimestre: dados.bimestres[this.indiceSegundoBimestre].faltas
       });
     });
   }
@@ -69,23 +69,13 @@ export class FormSegundoBimestreComponent implements OnInit {
     });
   }
 
-  get primeira_nota_segundo_bimestre() {
-    return this.formSegundoBimestre.get('primeira_nota_segundo_bimestre');
-  }
+  get primeira_nota_segundo_bimestre() {return this.formSegundoBimestre.get('primeira_nota_segundo_bimestre');}
 
-  get faltas_segundo_bimestre() {
-    return this.formSegundoBimestre.get('faltas_segundo_bimestre');
-  }
+  get faltas_segundo_bimestre() {return this.formSegundoBimestre.get('faltas_segundo_bimestre');}
 
-  get segunda_nota_segundo_bimestre() {
-    return this.formSegundoBimestre.get('segunda_nota_segundo_bimestre');
-  }
+  get segunda_nota_segundo_bimestre() {return this.formSegundoBimestre.get('segunda_nota_segundo_bimestre');}
 
-  get terceira_nota_segundo_bimestre() {
-    return this.formSegundoBimestre.get('terceira_nota_segundo_bimestre');
-  }
+  get terceira_nota_segundo_bimestre() {return this.formSegundoBimestre.get('terceira_nota_segundo_bimestre');}
 
-  get quarta_nota_segundo_bimestre() {
-    return this.formSegundoBimestre.get('quarta_nota_segundo_bimestre');
-  }
+  get quarta_nota_segundo_bimestre() {return this.formSegundoBimestre.get('quarta_nota_segundo_bimestre');}
 }

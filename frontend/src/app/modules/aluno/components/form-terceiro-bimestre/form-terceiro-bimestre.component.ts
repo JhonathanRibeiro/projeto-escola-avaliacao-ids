@@ -17,8 +17,7 @@ export class FormTerceiroBimestreComponent implements OnInit {
     private fb: FormBuilder,
     private api: AlunoService,
     private route: ActivatedRoute,
-    private messageService: MessageService    
-    ) { }
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.formularioTerceiroBimestre();

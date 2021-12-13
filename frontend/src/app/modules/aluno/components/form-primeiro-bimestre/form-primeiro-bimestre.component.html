@@ -21,8 +21,7 @@
                 <th class="titulo-atividade">Participação em sala de aula</th>
                 <td>1.5</td>
                 <td>
-                    <input type="number" maxlength="3" formControlName="primeira_nota_primeiro_bimestre"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); if (this.value > 10) this.value = 10">
+                    <input type="number" maxlength="3" formControlName="primeira_nota_primeiro_bimestre">
 
                     <div *ngIf="!primeira_nota_primeiro_bimestre.pristine && primeira_nota_primeiro_bimestre.errors">
                         <p *ngIf="primeira_nota_primeiro_bimestre.errors.required">Preenchimento obrigatório</p>

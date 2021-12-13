@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlunoService } from '../../aluno.service';
 import { paramsPrimeiroBimestre } from '../../helpers/params';
 import { MessageService } from 'primeng/api';
+import { Validacoes } from 'src/app/validators/validacoes';
 
 @Component({
   selector: 'app-form-primeiro-bimestre',
@@ -34,7 +35,7 @@ export class FormPrimeiroBimestreComponent implements OnInit {
         matricula: dados.matricula,
         status: dados.status,
         situacao: dados.situacao,
-        primeira_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n1, Validators.required],
+        primeira_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n1, Validacoes.campoVazio,],
         segunda_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n2, Validators.required],
         terceira_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n3, Validators.required],
         quarta_nota_primeiro_bimestre: [dados.bimestres[this.indicePrimeiroBimestre].n4, Validators.required],

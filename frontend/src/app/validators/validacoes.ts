@@ -7,12 +7,14 @@ export class Validacoes {
     static campoVazio(control: AbstractControl) {
         let input = control.value;
         if(input == '' || input == null) {
-            alert('Preenchimento obrigatório');
+          alert('Preenchimento obrigatório');
+          control.hasError('Campo obrigatorio')
+          console.log(control.hasError('Campo obrigatorio'))
         }
 
         if(input.length > 3) {input = input.slice(0, 3)}
         if(input > 10) {
-            alert('Não pode ser maior do que 10');
+          alert('Não pode ser maior do que 10');
         }
     }
 }
